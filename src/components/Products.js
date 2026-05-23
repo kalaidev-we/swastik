@@ -159,15 +159,15 @@ const SYNONYMS = {
 export default function Products() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [isAiSearch, setIsAiSearch] = useState(false);
   
   // Enquiry Modal States
   const [selectedCategoryName, setSelectedCategoryName] = useState(null);
   const [checkedProducts, setCheckedProducts] = useState({});
 
   // AI-powered Natural Language query matching logic
-  const filteredCategories = useMemo(() => {
+  const { filteredCategories, isAiSearch } = useMemo(() => {
     let list = CATEGORIES;
+    let isAiDetected = false;
 
     // Filter by Tab Selection
     if (activeCategory !== "All") {
@@ -178,7 +178,6 @@ export default function Products() {
     if (searchQuery.trim() !== "") {
       const q = searchQuery.toLowerCase().trim();
       let matchedCategories = new Set();
-      let isAiDetected = false;
 
       // 1. Direct Text Matching on Category Name / Description
       list.forEach((cat) => {
@@ -209,13 +208,10 @@ export default function Products() {
         });
       });
 
-      setIsAiSearch(isAiDetected);
       list = CATEGORIES.filter((cat) => matchedCategories.has(cat.name));
-    } else {
-      setIsAiSearch(false);
     }
 
-    return list;
+    return { filteredCategories: list, isAiSearch: isAiDetected };
   }, [searchQuery, activeCategory]);
 
   const handleCardClick = (categoryName) => {
@@ -384,7 +380,7 @@ export default function Products() {
         {filteredCategories.length === 0 && (
           <div className="text-center py-16 glass-panel rounded-md border-white/5">
             <p className="text-text-muted font-heading text-base">
-              No categories found matching "{searchQuery}"
+              No categories found matching &quot;{searchQuery}&quot;
             </p>
             <button
               onClick={() => {

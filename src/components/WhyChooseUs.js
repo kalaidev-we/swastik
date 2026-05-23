@@ -100,7 +100,7 @@ export default function WhyChooseUs() {
             Why Builders <span className="gold-gradient-text">Trust Us</span>
           </h2>
           <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed">
-            Since 1991, Swastik Trading Company (Mr. Locks) has been Erode's premier hardware sourcing partner. Here is why trade professionals prefer us:
+            Since 1991, Swastik Trading Company (Mr. Locks) has been Erode&apos;s premier hardware sourcing partner. Here is why trade professionals prefer us:
           </p>
         </div>
 
