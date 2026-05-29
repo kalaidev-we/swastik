@@ -49,6 +49,9 @@ export default function Brands() {
     brand31, brand32, brand33, brand34, brand35, brand36
   ], []);
 
+  // Duplicate list to ensure smooth infinite loop scroll
+  const scrollBrands = useMemo(() => [...brandImages, ...brandImages, ...brandImages], [brandImages]);
+
   return (
     <section id="brands" className="py-24 bg-bg-main overflow-hidden relative border-y border-black/5">
       {/* Background blueprint details */}
@@ -69,13 +72,14 @@ export default function Brands() {
         </p>
       </div>
 
-      {/* Grid of Authorized Brands (Visible Openly) */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 py-6">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-          {brandImages.map((brand, idx) => (
+      {/* Infinite Scrolling Container */}
+      <div className="relative flex flex-col gap-8 select-none pointer-events-auto z-10 py-4">
+        {/* Row 1 - Forward Scroll */}
+        <div className="flex w-max gap-8 animate-marquee hover:[animation-play-state:paused]">
+          {scrollBrands.slice(0, 54).map((brand, idx) => (
             <div
-              key={idx}
-              className="flex items-center justify-center p-6 bg-white steel-embossed hover:border-accent-gold/50 rounded-xl transition-all duration-300 group min-h-[100px] relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 clickable"
+              key={`f-${idx}`}
+              className="flex items-center justify-center px-8 py-5 bg-white steel-embossed hover:border-accent-gold/50 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 clickable"
             >
               {/* corner rivets for tactile detail */}
               <span className="rivet absolute top-1.5 left-1.5" />
@@ -86,8 +90,32 @@ export default function Brands() {
               <div className="transform group-hover:scale-105 transition-transform duration-300 flex items-center justify-center w-full h-full">
                 <Image
                   src={brand}
-                  alt={`Swastik Hardware Brand Partner ${idx + 1}`}
-                  className="max-h-[50px] w-auto max-w-full object-contain opacity-95 group-hover:opacity-100 transition-all duration-300"
+                  alt="Swastik Hardware Partner Logo"
+                  className="max-h-[50px] w-auto max-w-[140px] object-contain opacity-95 group-hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Row 2 - Reverse Scroll */}
+        <div className="flex w-max gap-8 animate-marquee-reverse hover:[animation-play-state:paused]">
+          {scrollBrands.slice(54).map((brand, idx) => (
+            <div
+              key={`r-${idx}`}
+              className="flex items-center justify-center px-8 py-5 bg-white steel-embossed hover:border-accent-gold/50 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 clickable"
+            >
+              {/* corner rivets for tactile detail */}
+              <span className="rivet absolute top-1.5 left-1.5" />
+              <span className="rivet absolute top-1.5 right-1.5" />
+              <span className="rivet absolute bottom-1.5 left-1.5" />
+              <span className="rivet absolute bottom-1.5 right-1.5" />
+
+              <div className="transform group-hover:scale-105 transition-transform duration-300 flex items-center justify-center w-full h-full">
+                <Image
+                  src={brand}
+                  alt="Swastik Hardware Partner Logo"
+                  className="max-h-[50px] w-auto max-w-[140px] object-contain opacity-95 group-hover:opacity-100 transition-all duration-300"
                 />
               </div>
             </div>
@@ -97,6 +125,10 @@ export default function Brands() {
 
       {/* Decorative Bottom Safety Stripes */}
       <div className="h-1.5 w-full safety-stripes opacity-80 mt-12 relative z-10" />
+
+      {/* Fade Overlays on sides for cinematic transition */}
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg-main to-transparent z-20 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg-main to-transparent z-20 pointer-events-none" />
     </section>
   );
 }

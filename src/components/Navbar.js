@@ -102,10 +102,10 @@ export default function Navbar() {
                 <a
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`text-xs tracking-wider uppercase transition-all duration-300 relative py-1 font-mono font-bold clickable ${
+                  className={`text-[11px] tracking-widest uppercase transition-all duration-300 relative py-1 font-body font-semibold clickable ${
                     activeSection === item.href.substring(1)
                       ? "text-accent-gold"
-                      : "text-neutral-900 hover:text-accent-gold"
+                      : "text-neutral-700 hover:text-accent-gold"
                   }`}
                 >
                   {item.name}
@@ -160,10 +160,10 @@ export default function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-base tracking-widest uppercase font-mono font-bold block py-2 border-b border-black/5 transition-colors duration-300 clickable ${
+                className={`text-sm tracking-widest uppercase font-body font-semibold block py-2.5 border-b border-black/5 transition-colors duration-300 clickable ${
                   activeSection === item.href.substring(1)
                     ? "text-accent-gold"
-                    : "text-neutral-900 hover:text-accent-gold"
+                    : "text-neutral-700 hover:text-accent-gold"
                 }`}
               >
                 {item.name}
