@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @import "tailwindcss";
 
@@ -10,9 +10,9 @@
   --color-accent-gold: #C5A880;
   --color-accent-amber: #E2B565;
   
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'Share Tech Mono', 'Geist Mono', monospace;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-marquee-reverse: marquee-reverse 40s linear infinite;
