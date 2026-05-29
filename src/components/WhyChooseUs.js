@@ -5,13 +5,11 @@ import { useEffect, useState, useRef } from "react";
 import { useInView } from "framer-motion";
 import { Users, ClipboardList, Shield, Zap, Sparkles, UserCheck } from "lucide-react";
 
-// CountUp component to animate stats
 function CountUp({ value, suffix = "", duration = 1.5 }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   
-  // Clean integer value from string
   const target = parseInt(value, 10);
 
   useEffect(() => {
@@ -36,7 +34,7 @@ function CountUp({ value, suffix = "", duration = 1.5 }) {
   }, [isInView, target, duration]);
 
   return (
-    <span ref={ref} className="font-heading font-bold text-accent-gold">
+    <span ref={ref} className="font-heading font-bold text-text-main">
       {count}
       {suffix}
     </span>
@@ -85,7 +83,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-24 bg-bg-card relative border-y border-white/5 overflow-hidden">
+    <section className="py-24 bg-white relative border-y border-black/5 overflow-hidden">
       {/* Background graphic elements */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent-gold/5 blur-[120px] rounded-full pointer-events-none" />
       
@@ -93,18 +91,18 @@ export default function WhyChooseUs() {
         
         {/* Title */}
         <div className="flex flex-col items-center text-center mb-20">
-          <span className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-accent-gold mb-3">
+          <span className="text-xs uppercase tracking-[0.25em] font-heading font-bold text-accent-gold mb-3">
             Our Advantages
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight text-text-main">
             Why Builders <span className="gold-gradient-text">Trust Us</span>
           </h2>
-          <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed">
+          <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed font-body">
             Since 1991, Swastik Trading Company (Mr. Locks) has been Erode&apos;s premier hardware sourcing partner. Here is why trade professionals prefer us:
           </p>
         </div>
 
-        {/* Counter Stats Section */}
+        {/* Counter Stats Section (Off-white cards) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {stats.map((stat, idx) => (
             <motion.div
@@ -113,12 +111,12 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="text-center p-6 bg-bg-main/50 border border-white/5 rounded-sm shadow-md"
+              className="text-center p-6 bg-bg-main border border-black/5 rounded-2xl shadow-sm"
             >
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight mb-2">
                 <CountUp value={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-xs md:text-sm text-text-muted uppercase tracking-widest font-heading font-semibold">
+              <p className="text-xs text-text-muted uppercase tracking-widest font-heading font-bold">
                 {stat.label}
               </p>
             </motion.div>
@@ -136,16 +134,16 @@ export default function WhyChooseUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: idx * 0.08, ease: "easeOut" }}
-                className="bg-bg-main border border-white/5 hover:border-accent-gold/25 p-8 rounded-sm transition-all duration-300 group flex flex-col justify-between"
+                className="bg-bg-main border border-black/5 hover:border-accent-gold/25 p-8 rounded-2xl transition-all duration-300 group flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-sm bg-accent-gold/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 group-hover:border group-hover:border-accent-gold/20 transition-all duration-300">
-                    <Icon className="text-accent-gold group-hover:scale-105 transition-transform" size={20} />
+                  <div className="w-10 h-10 rounded-xl bg-white border border-black/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 group-hover:border-accent-gold/20 transition-all duration-300">
+                    <Icon className="text-accent-gold group-hover:scale-105 transition-transform" size={18} />
                   </div>
                   <h3 className="text-lg font-heading font-bold text-text-main group-hover:text-accent-gold transition-colors duration-300">
                     {pt.title}
                   </h3>
-                  <p className="text-sm text-text-muted font-light leading-relaxed mt-3">
+                  <p className="text-sm text-text-muted font-light leading-relaxed mt-3 font-body">
                     {pt.desc}
                   </p>
                 </div>

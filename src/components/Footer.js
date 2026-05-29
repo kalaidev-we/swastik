@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Download, ArrowUp } from "lucide-react";
 
 export default function Footer() {
-  const [downloadState, setDownloadState] = useState("idle"); // idle, loading, done
+  const [downloadState, setDownloadState] = useState("idle");
   const [downloadInput, setDownloadInput] = useState("");
 
   const handleNavClick = (e, targetId) => {
@@ -31,11 +31,9 @@ export default function Footer() {
 
     setDownloadState("loading");
     
-    // Simulate catalog preparation and download
     setTimeout(() => {
       setDownloadState("done");
       
-      // Create a mock download click
       const link = document.createElement("a");
       link.href = "#";
       link.setAttribute("download", "Swastik_Catalog_2026.pdf");
@@ -87,9 +85,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-bg-main relative pt-20 pb-8 border-t border-white/5">
-      {/* Decorative top border glow */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent-gold/45 to-transparent" />
+    <footer className="bg-bg-main relative pt-20 pb-8 border-t border-black/5">
+      {/* Decorative top border line */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-black/5" />
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16">
         
@@ -107,7 +105,7 @@ export default function Footer() {
               & COMPANY
             </span>
           </a>
-          <p className="text-xs text-text-muted leading-relaxed max-w-sm mt-2 font-light">
+          <p className="text-xs text-text-muted leading-relaxed max-w-sm mt-2 font-light font-body">
             Erode&apos;s premier destination for high-end architectural hardware, modular drawer channels, security locks, and specialized wood adhesives. Elevating residential and commercial projects since 1991.
           </p>
 
@@ -120,7 +118,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-accent-gold/30 hover:bg-accent-gold/10 text-text-muted hover:text-accent-gold flex items-center justify-center transition-all duration-300 clickable"
+                  className="w-9 h-9 rounded-full bg-white border border-black/5 hover:border-accent-gold/30 hover:bg-accent-gold/10 text-text-muted hover:text-accent-gold flex items-center justify-center transition-all duration-300 clickable"
                   title={social.name}
                 >
                   {social.svg}
@@ -148,7 +146,7 @@ export default function Footer() {
                 <a
                   href={`#${link.id}`}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className="text-xs text-text-muted hover:text-accent-gold transition-colors duration-300 font-light block py-0.5 clickable"
+                  className="text-xs text-text-muted hover:text-text-main transition-colors duration-300 font-light block py-0.5 clickable"
                 >
                   {link.name}
                 </a>
@@ -175,7 +173,7 @@ export default function Footer() {
                 <a
                   href="#products"
                   onClick={(e) => handleNavClick(e, "products")}
-                  className="text-xs text-text-muted hover:text-accent-gold transition-colors duration-300 font-light block py-0.5 clickable"
+                  className="text-xs text-text-muted hover:text-text-main transition-colors duration-300 font-light block py-0.5 clickable"
                 >
                   {item}
                 </a>
@@ -190,7 +188,7 @@ export default function Footer() {
             <h4 className="text-xs uppercase tracking-widest text-text-main font-heading font-bold mb-2">
               Sourcing Catalogue
             </h4>
-            <p className="text-xs text-text-muted leading-relaxed font-light">
+            <p className="text-xs text-text-muted leading-relaxed font-light font-body">
               Enter your email address to receive our comprehensive 2026 digital product catalog containing Hettich, Ebco, and Hafele specification indexes.
             </p>
           </div>
@@ -202,16 +200,16 @@ export default function Footer() {
               value={downloadInput}
               onChange={(e) => setDownloadInput(e.target.value)}
               required
-              className="w-full bg-white/5 border border-white/10 focus:border-accent-gold/40 rounded-sm py-3 pl-4 pr-16 outline-none text-xs text-text-main tracking-wider font-body transition-colors"
+              className="w-full bg-white border border-black/10 focus:border-accent-gold/45 rounded-full py-3.5 pl-4 pr-16 outline-none text-xs text-text-main tracking-wider font-body transition-colors"
             />
             <button
               type="submit"
               disabled={downloadState === "loading"}
-              className="absolute right-1 p-2 rounded-sm bg-accent-gold hover:bg-accent-gold/90 text-bg-main font-heading font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center clickable disabled:opacity-50"
+              className="absolute right-1 p-2.5 rounded-full bg-text-main hover:bg-text-main/90 text-white font-heading font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center clickable disabled:opacity-50"
               aria-label="Download Catalogue"
             >
               {downloadState === "loading" ? (
-                <span className="w-4 h-4 border-2 border-bg-main border-t-transparent rounded-full animate-spin" />
+                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
                 <Download size={14} />
               )}
@@ -227,14 +225,14 @@ export default function Footer() {
       </div>
 
       {/* Copyright & Scroll Top Row */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
         <p className="text-[10px] text-text-muted font-heading tracking-wider">
-          © 2026 Swastik Trading Company. All Rights Reserved. | Designed with Industrial Luxury.
+          © 2026 Swastik Trading Company. All Rights Reserved. | Designed with Minimalist Luxury.
         </p>
         
         <button
           onClick={handleScrollTop}
-          className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-text-muted hover:text-accent-gold transition-colors font-heading font-bold clickable"
+          className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-text-muted hover:text-text-main transition-colors font-heading font-bold clickable"
         >
           <span>Back to Top</span>
           <ArrowUp size={12} />

@@ -32,7 +32,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg-main pt-20"
     >
-      {/* Background Image with Zoom Zoom Effect */}
+      {/* Background Image with Zoom and clean light overlays */}
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] ease-out scale-105"
@@ -40,14 +40,15 @@ export default function Hero() {
             backgroundImage: "url('/hero_showroom.png')",
           }}
         />
-        {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-main via-bg-main/60 to-transparent" />
-        <div className="absolute inset-0 bg-black/40" />
-        {/* Subtle spotlight effect that tracks or stays fixed */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(15,17,21,0.8)_80%)]" />
+        {/* Apple-style high-key gradient overlay (Fades left to right from light grey to transparent) */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[60%] bg-gradient-to-r from-bg-main via-bg-main/95 to-transparent z-10" />
+        {/* Soft bottom lift */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-bg-main to-transparent z-10" />
+        {/* Light overlay for image side (right) to keep showroom clean and bright */}
+        <div className="absolute inset-0 bg-white/10" />
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-16 md:py-24">
+      <div className="relative z-20 max-w-[1440px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-16 md:py-24">
         {/* Hero Left Content */}
         <div className="lg:col-span-7 flex flex-col items-start text-left">
           {/* Animated Badge */}
@@ -55,10 +56,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-black/5 shadow-sm backdrop-blur-md mb-6"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse" />
-            <span className="text-xs uppercase tracking-[0.2em] font-heading font-semibold text-accent-gold">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold" />
+            <span className="text-[10px] uppercase tracking-[0.2em] font-heading font-bold text-text-main">
               Tamil Nadu&apos;s Trusted Architectural Supplier
             </span>
           </motion.div>
@@ -68,7 +69,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading tracking-tight leading-tight md:leading-[1.1] mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading tracking-tight leading-tight md:leading-[1.1] mb-6 text-text-main"
           >
             Built on Trust. <br />
             <span className="gold-gradient-text">Designed for Modern Spaces.</span>
@@ -79,7 +80,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-text-muted text-base md:text-lg max-w-xl mb-10 leading-relaxed font-light"
+            className="text-text-muted text-base md:text-lg max-w-xl mb-10 leading-relaxed font-light font-body"
           >
             Premium hardware, modular fittings, smart locks, high-strength adhesives, and complete interior solutions trusted by builders, architects, and homeowners across Tamil Nadu since 1991.
           </motion.p>
@@ -93,24 +94,24 @@ export default function Hero() {
           >
             <button
               onClick={handleScrollToProducts}
-              className="flex items-center gap-2 px-8 py-4 rounded-sm bg-accent-gold hover:bg-accent-gold/90 text-bg-main font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(200,155,60,0.5)] clickable group"
+              className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-text-main hover:bg-text-main/90 text-white font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-sm clickable group"
             >
               <span>Explore Products</span>
-              <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
               onClick={openWhatsApp}
-              className="flex items-center gap-2 px-8 py-4 rounded-sm bg-white/5 hover:bg-white/10 text-text-main border border-white/10 hover:border-white/20 font-heading font-bold uppercase tracking-wider transition-all duration-300 backdrop-blur-md clickable"
+              className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-white hover:bg-black/5 text-text-main border border-black/10 font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-sm clickable"
             >
-              <MessageSquare size={16} className="text-accent-gold" />
+              <MessageSquare size={14} className="text-accent-gold" />
               <span>WhatsApp Enquiry</span>
             </button>
           </motion.div>
         </div>
 
-        {/* Hero Right: Floating Stats Cards */}
-        <div className="lg:col-span-5 grid grid-cols-2 gap-4 relative">
+        {/* Hero Right: Floating Stats Cards (Clean White) */}
+        <div className="lg:col-span-5 grid grid-cols-2 gap-4 relative z-10">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -123,20 +124,20 @@ export default function Hero() {
                   delay: 0.5 + index * 0.15,
                   ease: "easeOut",
                 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="glass-panel hover:glass-panel-glow p-6 rounded-md flex flex-col justify-between min-h-[140px] md:min-h-[160px] relative overflow-hidden group transition-all duration-300"
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="bg-white border border-black/5 p-6 rounded-2xl flex flex-col justify-between min-h-[140px] md:min-h-[160px] relative overflow-hidden group shadow-sm hover:shadow-md transition-all duration-300"
               >
                 {/* Decorative background glow */}
                 <div className="absolute -right-4 -bottom-4 w-20 h-20 rounded-full bg-accent-gold/5 blur-xl group-hover:bg-accent-gold/10 transition-colors duration-300" />
                 
                 <div className="flex justify-between items-start">
-                  <Icon className="text-accent-gold group-hover:scale-110 transition-transform duration-300" size={24} />
+                  <Icon className="text-accent-gold group-hover:scale-105 transition-transform" size={22} />
                 </div>
                 <div className="mt-4">
                   <h3 className="text-2xl md:text-3xl font-bold font-heading text-text-main tracking-tight">
                     {stat.value}
                   </h3>
-                  <p className="text-xs md:text-sm text-text-muted tracking-wider mt-1 group-hover:text-text-main transition-colors duration-300">
+                  <p className="text-xs text-text-muted tracking-wider mt-1 group-hover:text-text-main transition-colors duration-300">
                     {stat.label}
                   </p>
                 </div>

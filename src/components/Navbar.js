@@ -23,7 +23,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Simple active link tracker on scroll
       const sections = MENU_ITEMS.map(item => document.getElementById(item.href.substring(1)));
       const scrollPosition = window.scrollY + 200;
 
@@ -52,7 +51,7 @@ export default function Navbar() {
     if (targetElement) {
       setIsMobileMenuOpen(false);
       window.scrollTo({
-        top: targetElement.offsetTop - 80, // Offset for navbar height
+        top: targetElement.offsetTop - 80,
         behavior: "smooth",
       });
       setActiveSection(targetId);
@@ -68,7 +67,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "py-4 bg-bg-main/75 backdrop-blur-md border-b border-white/5 shadow-lg"
+          ? "py-4 bg-white/80 backdrop-blur-md border-b border-black/5 shadow-sm"
           : "py-6 bg-transparent"
       }`}
     >
@@ -95,15 +94,15 @@ export default function Navbar() {
                 <a
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`text-sm tracking-wider uppercase transition-all duration-300 relative py-1 font-heading font-medium clickable ${
+                  className={`text-xs tracking-wider uppercase transition-all duration-300 relative py-1 font-heading font-semibold clickable ${
                     activeSection === item.href.substring(1)
-                      ? "text-accent-gold"
+                      ? "text-text-main"
                       : "text-text-muted hover:text-text-main"
                   }`}
                 >
                   {item.name}
                   {activeSection === item.href.substring(1) && (
-                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-accent-gold rounded" />
+                    <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-text-main rounded" />
                   )}
                 </a>
               </li>
@@ -112,21 +111,21 @@ export default function Navbar() {
 
           <button
             onClick={openWhatsApp}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-sm bg-accent-gold hover:bg-accent-gold/90 text-bg-main text-sm font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(200,155,60,0.4)] clickable"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-text-main hover:bg-text-main/90 text-white text-xs font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-sm clickable"
           >
-            <PhoneCall size={16} />
+            <PhoneCall size={14} />
             <span>Enquire Now</span>
           </button>
         </div>
 
-        {/* Mobile menu trigger */}
+        {/* Mobile Menu Action trigger */}
         <div className="lg:hidden flex items-center gap-4">
           <button
             onClick={openWhatsApp}
-            className="p-2 rounded-full bg-accent-gold text-bg-main hover:scale-105 transition-all duration-300 clickable"
+            className="p-2.5 rounded-full bg-text-main text-white hover:scale-105 transition-all duration-300 clickable"
             aria-label="WhatsApp Enquiry"
           >
-            <PhoneCall size={18} />
+            <PhoneCall size={14} />
           </button>
           
           <button
@@ -141,7 +140,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 top-[73px] bg-bg-main/98 backdrop-blur-lg z-40 transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 top-[73px] bg-white/98 backdrop-blur-lg z-45 transition-all duration-500 lg:hidden ${
           isMobileMenuOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-8 pointer-events-none"
@@ -153,9 +152,9 @@ export default function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-lg tracking-widest uppercase font-heading font-medium block py-2 border-b border-white/5 clickable ${
+                className={`text-base tracking-widest uppercase font-heading font-bold block py-2 border-b border-black/5 clickable ${
                   activeSection === item.href.substring(1)
-                    ? "text-accent-gold"
+                    ? "text-text-main"
                     : "text-text-muted"
                 }`}
               >
@@ -166,9 +165,9 @@ export default function Navbar() {
           <li className="w-full mt-4 flex justify-center">
             <button
               onClick={openWhatsApp}
-              className="w-full max-w-xs flex items-center justify-center gap-2 py-3.5 bg-accent-gold text-bg-main rounded-sm font-heading font-bold uppercase tracking-widest transition-all duration-300 clickable"
+              className="w-full max-w-xs flex items-center justify-center gap-2 py-3.5 bg-text-main text-white rounded-full font-heading font-bold uppercase tracking-widest transition-all duration-300 clickable"
             >
-              <PhoneCall size={18} />
+              <PhoneCall size={16} />
               <span>WhatsApp Chat</span>
             </button>
           </li>

@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function Brands() {
   const brands = [
     "Hafele",
@@ -18,13 +16,12 @@ export default function Brands() {
     "Archis",
   ];
 
-  // Duplicate the brand list to ensure continuous scrolling
   const scrollBrands = [...brands, ...brands, ...brands];
 
   return (
-    <section id="brands" className="py-20 bg-bg-main/50 border-y border-white/5 overflow-hidden relative">
+    <section id="brands" className="py-20 bg-white border-y border-black/5 overflow-hidden relative">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 mb-10 text-center">
-        <span className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-accent-gold mb-3 block">
+        <span className="text-xs uppercase tracking-[0.25em] font-heading font-bold text-accent-gold mb-3 block">
           Partners
         </span>
         <h2 className="text-2xl sm:text-3xl font-bold font-heading tracking-tight text-text-main">
@@ -39,9 +36,9 @@ export default function Brands() {
           {scrollBrands.map((brand, idx) => (
             <div
               key={`forward-${brand}-${idx}`}
-              className="flex items-center justify-center px-10 py-5 bg-bg-card border border-white/5 hover:border-accent-gold/30 rounded-sm shadow-md transition-all duration-300 group min-w-[200px]"
+              className="flex items-center justify-center px-10 py-5 bg-bg-main border border-black/5 hover:border-accent-gold/30 hover:bg-white rounded-xl shadow-sm transition-all duration-300 group min-w-[200px]"
             >
-              <span className="text-lg md:text-xl font-heading uppercase font-bold tracking-widest text-text-muted group-hover:text-accent-gold transition-colors duration-300 group-hover:scale-105 transform">
+              <span className="text-lg md:text-xl font-heading uppercase font-bold tracking-widest text-text-muted group-hover:text-text-main transition-colors duration-300 group-hover:scale-105 transform">
                 {brand}
               </span>
             </div>
@@ -53,9 +50,9 @@ export default function Brands() {
           {scrollBrands.map((brand, idx) => (
             <div
               key={`reverse-${brand}-${idx}`}
-              className="flex items-center justify-center px-10 py-5 bg-bg-card border border-white/5 hover:border-accent-gold/30 rounded-sm shadow-md transition-all duration-300 group min-w-[200px]"
+              className="flex items-center justify-center px-10 py-5 bg-bg-main border border-black/5 hover:border-accent-gold/30 hover:bg-white rounded-xl shadow-sm transition-all duration-300 group min-w-[200px]"
             >
-              <span className="text-lg md:text-xl font-heading uppercase font-bold tracking-widest text-text-muted group-hover:text-accent-gold transition-colors duration-300 group-hover:scale-105 transform">
+              <span className="text-lg md:text-xl font-heading uppercase font-bold tracking-widest text-text-muted group-hover:text-text-main transition-colors duration-300 group-hover:scale-105 transform">
                 {brand}
               </span>
             </div>
@@ -64,8 +61,8 @@ export default function Brands() {
       </div>
 
       {/* Fade Overlays on sides for cinematic transition */}
-      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-bg-main to-transparent z-10 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-bg-main to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
     </section>
   );
 }

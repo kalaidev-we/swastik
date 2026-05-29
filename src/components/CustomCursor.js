@@ -9,11 +9,9 @@ export default function CustomCursor() {
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    // Check if device supports hover (desktop)
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     if (isMobile) return;
 
-    // Enable custom cursor styles
     document.documentElement.classList.add("custom-cursor-active");
 
     const onMouseMove = (e) => {
@@ -24,7 +22,6 @@ export default function CustomCursor() {
       }
       
       if (ringRef.current) {
-        // Delayed follow for the ring
         ringRef.current.animate(
           {
             transform: `translate3d(${x - 16}px, ${y - 16}px, 0) scale(${hovered ? 1.5 : 1})`,
@@ -46,7 +43,6 @@ export default function CustomCursor() {
       setHidden(false);
     };
 
-    // Attach hover listeners to links and buttons
     const handleMouseOver = (e) => {
       const target = e.target.closest("a, button, input, select, textarea, [role='button'], .clickable");
       if (target) {
@@ -74,21 +70,21 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Small central dot */}
+      {/* Dark central dot for light mode contrast */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-accent-gold pointer-events-none z-9999 mix-blend-difference transition-transform duration-100 ease-out"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-text-main pointer-events-none z-9999 mix-blend-multiply transition-transform duration-100 ease-out"
         style={{
           transform: "translate3d(-100px, -100px, 0)",
         }}
       />
-      {/* Outer ring */}
+      {/* Dark ring that turns gold on hover */}
       <div
         ref={ringRef}
         className={`fixed top-0 left-0 w-8 h-8 rounded-full border pointer-events-none z-9998 transition-colors duration-300 ${
           hovered
             ? "border-accent-gold bg-accent-gold/10"
-            : "border-text-main/30 bg-transparent"
+            : "border-text-main/20 bg-transparent"
         }`}
         style={{
           transform: "translate3d(-100px, -100px, 0)",

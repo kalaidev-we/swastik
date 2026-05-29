@@ -2,9 +2,8 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Filter, MessageSquare, X, Check, Sparkles, ShoppingBag } from "lucide-react";
+import { Search, Check, Sparkles, MessageSquare, X } from "lucide-react";
 
-// Predefined products list for enquiries
 const CATEGORY_PRODUCTS = {
   "Locks & Handles": [
     { id: "lh1", name: "Premium Biometric Digital Smart Lock", brand: "Godrej / Hafele" },
@@ -107,7 +106,6 @@ const CATEGORIES = [
   },
 ];
 
-// NLP Synonyms for mock AI search routing
 const SYNONYMS = {
   "glue": "Adhesives & Waterproofing",
   "fevicol": "Adhesives & Waterproofing",
@@ -160,26 +158,21 @@ export default function Products() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   
-  // Enquiry Modal States
   const [selectedCategoryName, setSelectedCategoryName] = useState(null);
   const [checkedProducts, setCheckedProducts] = useState({});
 
-  // AI-powered Natural Language query matching logic
   const { filteredCategories, isAiSearch } = useMemo(() => {
     let list = CATEGORIES;
     let isAiDetected = false;
 
-    // Filter by Tab Selection
     if (activeCategory !== "All") {
       list = list.filter((cat) => cat.name === activeCategory);
     }
 
-    // Filter by Query
     if (searchQuery.trim() !== "") {
       const q = searchQuery.toLowerCase().trim();
       let matchedCategories = new Set();
 
-      // 1. Direct Text Matching on Category Name / Description
       list.forEach((cat) => {
         if (
           cat.name.toLowerCase().includes(q) ||
@@ -190,7 +183,6 @@ export default function Products() {
         }
       });
 
-      // 2. Synonyms Matching (Mock AI NLP mapping)
       Object.keys(SYNONYMS).forEach((keyword) => {
         if (q.includes(keyword)) {
           matchedCategories.add(SYNONYMS[keyword]);
@@ -198,7 +190,6 @@ export default function Products() {
         }
       });
 
-      // 3. Search inside product items to link back to categories
       Object.keys(CATEGORY_PRODUCTS).forEach((catName) => {
         CATEGORY_PRODUCTS[catName].forEach((p) => {
           if (p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q)) {
@@ -216,7 +207,6 @@ export default function Products() {
 
   const handleCardClick = (categoryName) => {
     setSelectedCategoryName(categoryName);
-    // Reset checked products for this category
     setCheckedProducts({});
   };
 
@@ -236,7 +226,7 @@ export default function Products() {
       return;
     }
 
-    let text = `Hello Swastik & Company, I am interested in the following products under *${selectedCategoryName}*:\n\n`;
+    let text = `Hello Swastik & Company,\n\nI am interested in the following products under *${selectedCategoryName}*:\n\n`;
     chosenProducts.forEach((p, idx) => {
       text += `${idx + 1}. *${p.name}* (Brand: ${p.brand})\n`;
     });
@@ -248,7 +238,7 @@ export default function Products() {
 
   return (
     <section id="products" className="py-24 bg-bg-main relative">
-      {/* Background glow highlights */}
+      {/* Background glow highlights (extremely subtle) */}
       <div className="absolute top-1/2 right-0 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
 
@@ -256,19 +246,19 @@ export default function Products() {
         
         {/* Title Block */}
         <div className="flex flex-col items-center text-center mb-16">
-          <span className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-accent-gold mb-3">
+          <span className="text-xs uppercase tracking-[0.25em] font-heading font-bold text-accent-gold mb-3">
             Collections
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight text-text-main">
             Premium <span className="gold-gradient-text">Product Collections</span>
           </h2>
-          <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed">
+          <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed font-body">
             Click on any collection category to browse specific products and request an instant WhatsApp quotation.
           </p>
         </div>
 
-        {/* AI Search & Filter Panel */}
-        <div className="glass-panel p-6 rounded-md mb-12 flex flex-col md:flex-row gap-6 justify-between items-center border-white/5 shadow-xl">
+        {/* AI Search & Filter Panel (White card style) */}
+        <div className="bg-white border border-black/5 p-6 rounded-2xl mb-12 flex flex-col md:flex-row gap-6 justify-between items-center shadow-sm">
           
           {/* Smart Search Bar */}
           <div className="relative w-full md:max-w-md flex items-center">
@@ -277,13 +267,13 @@ export default function Products() {
               placeholder="AI Smart Search (e.g., glue, hettich, smart locks, hinges)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-bg-main/80 text-text-main border border-white/10 focus:border-accent-gold/50 rounded-sm py-3 pl-11 pr-20 outline-none text-sm tracking-wide font-body transition-colors"
+              className="w-full bg-bg-main text-text-main border border-black/5 focus:border-accent-gold/40 rounded-full py-3.5 pl-11 pr-20 outline-none text-sm tracking-wide font-body transition-colors"
             />
-            <Search className="absolute left-4 text-text-muted" size={18} />
+            <Search className="absolute left-4 text-text-muted" size={16} />
             
             {/* AI Status Badge */}
             {searchQuery && (
-              <div className="absolute right-3 flex items-center gap-1 bg-accent-gold/15 border border-accent-gold/20 px-2 py-0.5 rounded-full text-[10px] text-accent-gold font-heading font-medium">
+              <div className="absolute right-3 flex items-center gap-1 bg-accent-gold/15 border border-accent-gold/25 px-2.5 py-0.5 rounded-full text-[10px] text-accent-gold font-heading font-bold">
                 {isAiSearch ? (
                   <>
                     <Sparkles size={10} className="animate-spin" />
@@ -303,10 +293,10 @@ export default function Products() {
                 setActiveCategory("All");
                 setSearchQuery("");
               }}
-              className={`px-4 py-2 text-xs uppercase tracking-wider font-heading font-bold rounded-sm border transition-all duration-300 ${
+              className={`px-5 py-2.5 text-xs uppercase tracking-wider font-heading font-bold rounded-full border transition-all duration-300 ${
                 activeCategory === "All"
-                  ? "bg-accent-gold border-accent-gold text-bg-main"
-                  : "border-white/10 text-text-muted hover:text-text-main hover:border-white/20"
+                  ? "bg-text-main border-text-main text-white"
+                  : "border-black/10 text-text-muted hover:text-text-main hover:border-black/20"
               }`}
             >
               All Collections
@@ -318,10 +308,10 @@ export default function Products() {
                   setActiveCategory(cat.name);
                   setSearchQuery("");
                 }}
-                className={`px-4 py-2 text-xs uppercase tracking-wider font-heading font-bold rounded-sm border transition-all duration-300 ${
+                className={`px-5 py-2.5 text-xs uppercase tracking-wider font-heading font-bold rounded-full border transition-all duration-300 ${
                   activeCategory === cat.name
-                    ? "bg-accent-gold border-accent-gold text-bg-main"
-                    : "border-white/10 text-text-muted hover:text-text-main hover:border-white/20"
+                    ? "bg-text-main border-text-main text-white"
+                    : "border-black/10 text-text-muted hover:text-text-main hover:border-black/20"
                 }`}
               >
                 {cat.name.split(" ")[0]}
@@ -336,7 +326,7 @@ export default function Products() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {filteredCategories.map((cat, idx) => (
+            {filteredCategories.map((cat) => (
               <motion.div
                 layout
                 key={cat.name}
@@ -345,17 +335,17 @@ export default function Products() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
                 onClick={() => handleCardClick(cat.name)}
-                className="glass-panel hover:glass-panel-glow p-6 rounded-md flex flex-col justify-between aspect-[5/4] sm:aspect-square relative overflow-hidden group cursor-pointer border-white/5 transition-all duration-300 clickable select-none"
+                className="bg-white border border-black/5 hover:border-accent-gold/20 p-6 rounded-2xl flex flex-col justify-between aspect-[5/4] sm:aspect-square relative overflow-hidden group cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 clickable select-none"
               >
-                {/* Gold glowing accent border on hover */}
-                <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/30 rounded-md transition-all duration-300" />
+                {/* Micro Border Glow */}
+                <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/15 rounded-2xl transition-all duration-300" />
                 
                 {/* SVG/Emoji Overlay Icon */}
                 <div className="flex justify-between items-start">
-                  <span className="text-3xl filter drop-shadow-[0_2px_8px_rgba(200,155,60,0.2)]">
+                  <span className="text-3xl filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
                     {cat.icon}
                   </span>
-                  <span className="text-[10px] uppercase tracking-widest text-accent-gold bg-accent-gold/10 px-2.5 py-1 rounded-full font-heading font-medium border border-accent-gold/10">
+                  <span className="text-[10px] uppercase tracking-widest text-text-main bg-bg-main px-3 py-1.5 rounded-full font-heading font-bold border border-black/5">
                     Browse
                   </span>
                 </div>
@@ -364,10 +354,10 @@ export default function Products() {
                   <h3 className="text-lg md:text-xl font-bold font-heading text-text-main tracking-tight group-hover:text-accent-gold transition-colors duration-300">
                     {cat.name}
                   </h3>
-                  <p className="text-[10px] tracking-widest text-text-muted uppercase font-heading font-semibold mt-1">
+                  <p className="text-[10px] tracking-widest text-text-muted uppercase font-heading font-bold mt-1">
                     {cat.tagline}
                   </p>
-                  <p className="text-xs text-text-muted font-light leading-relaxed mt-3 line-clamp-3">
+                  <p className="text-xs text-text-muted font-light leading-relaxed mt-3 line-clamp-3 font-body">
                     {cat.description}
                   </p>
                 </div>
@@ -378,7 +368,7 @@ export default function Products() {
 
         {/* Empty Search State */}
         {filteredCategories.length === 0 && (
-          <div className="text-center py-16 glass-panel rounded-md border-white/5">
+          <div className="text-center py-16 bg-white border border-black/5 rounded-2xl shadow-sm">
             <p className="text-text-muted font-heading text-base">
               No categories found matching &quot;{searchQuery}&quot;
             </p>
@@ -387,7 +377,7 @@ export default function Products() {
                 setSearchQuery("");
                 setActiveCategory("All");
               }}
-              className="mt-4 text-xs uppercase tracking-wider text-accent-gold hover:text-white font-heading font-bold transition-colors"
+              className="mt-4 text-xs uppercase tracking-wider text-text-main hover:text-accent-gold font-heading font-bold transition-colors"
             >
               Clear Filters & Search
             </button>
@@ -400,24 +390,24 @@ export default function Products() {
         {selectedCategoryName && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             
-            {/* Modal Overlay */}
+            {/* Modal Overlay (Dark frosted background) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedCategoryName(null)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             />
 
-            {/* Modal Box */}
+            {/* Modal Box (Pure White Apple style) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative bg-bg-card border border-white/10 w-full max-w-lg rounded-md overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh]"
+              className="relative bg-white border border-black/5 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh]"
             >
               {/* Header */}
-              <div className="p-6 border-b border-white/10 flex justify-between items-start bg-bg-main/50">
+              <div className="p-6 border-b border-black/5 flex justify-between items-start bg-bg-main/50">
                 <div>
                   <span className="text-[10px] tracking-widest text-accent-gold uppercase font-heading font-bold">
                     Enquire Collection
@@ -428,15 +418,15 @@ export default function Products() {
                 </div>
                 <button
                   onClick={() => setSelectedCategoryName(null)}
-                  className="p-1 rounded-full text-text-muted hover:text-text-main transition-colors clickable"
+                  className="p-1.5 rounded-full text-text-muted hover:text-text-main hover:bg-black/5 transition-colors clickable"
                 >
-                  <X size={20} />
+                  <X size={18} />
                 </button>
               </div>
 
               {/* Body: Selectable Products Checklist */}
               <div className="p-6 overflow-y-auto flex-1 space-y-4">
-                <p className="text-xs text-text-muted leading-relaxed">
+                <p className="text-xs text-text-muted leading-relaxed font-body">
                   Select the products you are interested in. We will compile them into a pre-formatted WhatsApp text message for an instant quotation.
                 </p>
 
@@ -447,25 +437,25 @@ export default function Products() {
                       <div
                         key={p.id}
                         onClick={() => handleCheckboxChange(p.id)}
-                        className={`flex items-center justify-between p-4 rounded-sm border cursor-pointer select-none transition-all duration-300 ${
+                        className={`flex items-center justify-between p-4 rounded-xl border cursor-pointer select-none transition-all duration-300 ${
                           isChecked
-                            ? "bg-accent-gold/5 border-accent-gold"
-                            : "bg-bg-main/40 border-white/5 hover:border-white/10"
+                            ? "bg-bg-main border-text-main"
+                            : "bg-white border-black/5 hover:border-black/10"
                         }`}
                       >
                         <div>
                           <p className="text-sm font-heading font-semibold text-text-main">
                             {p.name}
                           </p>
-                          <p className="text-[10px] tracking-wider text-text-muted uppercase mt-0.5">
+                          <p className="text-[10px] tracking-wider text-text-muted uppercase mt-0.5 font-heading">
                             Brand: {p.brand}
                           </p>
                         </div>
                         <div
                           className={`w-5 h-5 rounded-full flex items-center justify-center border transition-all ${
                             isChecked
-                              ? "bg-accent-gold border-accent-gold text-bg-main"
-                              : "border-white/20 bg-transparent"
+                              ? "bg-text-main border-text-main text-white"
+                              : "border-black/10 bg-transparent"
                           }`}
                         >
                           {isChecked && <Check size={12} strokeWidth={3} />}
@@ -477,12 +467,12 @@ export default function Products() {
               </div>
 
               {/* Footer Actions */}
-              <div className="p-6 border-t border-white/10 flex flex-col gap-3 bg-bg-main/50">
+              <div className="p-6 border-t border-black/5 flex flex-col gap-3 bg-bg-main/50">
                 <button
                   onClick={sendWhatsAppEnquiry}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 bg-accent-gold hover:bg-accent-gold/90 text-bg-main rounded-sm font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-md clickable"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 bg-text-main hover:bg-text-main/90 text-white rounded-full font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-sm clickable"
                 >
-                  <MessageSquare size={18} />
+                  <MessageSquare size={16} />
                   <span>Enquire via WhatsApp</span>
                 </button>
                 <button

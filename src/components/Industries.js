@@ -64,18 +64,18 @@ export default function Industries() {
         
         {/* Title */}
         <div className="flex flex-col items-center text-center mb-16">
-          <span className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-accent-gold mb-3">
+          <span className="text-xs uppercase tracking-[0.25em] font-heading font-bold text-accent-gold mb-3">
             Sectors We Support
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-heading tracking-tight text-text-main">
             Industries We <span className="gold-gradient-text">Serve</span>
           </h2>
-          <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed">
+          <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed font-body">
             Delivering high-end hardware, structural modular solutions, and construction supplies for diverse trade sectors.
           </p>
         </div>
 
-        {/* Grid of Glass Cards */}
+        {/* Grid of Clean White Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {industries.map((ind, idx) => {
             const Icon = ind.icon;
@@ -86,20 +86,19 @@ export default function Industries() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: idx * 0.08, ease: "easeOut" }}
-                className="glass-panel hover:glass-panel-glow p-6 rounded-md flex flex-col justify-between min-h-[200px] group transition-all duration-300 relative"
+                className="bg-white border border-black/5 hover:border-accent-gold/25 p-6 rounded-2xl flex flex-col justify-between min-h-[200px] group shadow-sm hover:shadow-md transition-all duration-300 relative"
               >
-                {/* Micro Border Glow */}
-                <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/20 rounded-md transition-all duration-300" />
+                <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/15 rounded-2xl transition-all duration-300" />
                 
                 <div>
-                  <div className="w-12 h-12 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 group-hover:border-accent-gold/30 transition-all duration-300">
-                    <Icon className="text-accent-gold group-hover:scale-110 transition-transform" size={22} />
+                  <div className="w-12 h-12 rounded-xl bg-bg-main border border-black/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 group-hover:border-accent-gold/20 transition-all duration-300">
+                    <Icon className="text-accent-gold group-hover:scale-105 transition-transform" size={20} />
                   </div>
                   <h3 className="text-base md:text-lg font-heading font-bold text-text-main group-hover:text-accent-gold transition-colors duration-300">
                     {ind.name}
                   </h3>
                 </div>
-                <p className="text-xs text-text-muted font-light leading-relaxed mt-3">
+                <p className="text-xs text-text-muted font-light leading-relaxed mt-3 font-body">
                   {ind.desc}
                 </p>
               </motion.div>

@@ -50,13 +50,13 @@ export default function Testimonials() {
         
         {/* Title */}
         <div className="flex flex-col items-center text-center mb-16">
-          <span className="text-xs uppercase tracking-[0.25em] font-heading font-semibold text-accent-gold mb-3">
+          <span className="text-xs uppercase tracking-[0.25em] font-heading font-bold text-accent-gold mb-3">
             Endorsements
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-heading tracking-tight text-text-main">
             Customer <span className="gold-gradient-text">Testimonials</span>
           </h2>
-          <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed">
+          <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed font-body">
             Here is what architects, builders, and homeowners in Tamil Nadu say about Swastik Trading Company (Mr. Locks).
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function Testimonials() {
         <div className="max-w-3xl mx-auto relative flex flex-col items-center">
           
           {/* Quote Mark */}
-          <div className="mb-6 text-accent-gold/20">
+          <div className="mb-6 text-accent-gold/15">
             <Quote size={56} strokeWidth={1} />
           </div>
 
@@ -77,26 +77,26 @@ export default function Testimonials() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4 }}
-                className="glass-panel p-8 md:p-12 rounded-md border-white/5 shadow-2xl relative w-full text-center"
+                className="bg-white border border-black/5 p-8 md:p-12 rounded-2xl shadow-sm relative w-full text-center"
               >
                 {/* Rating stars */}
                 <div className="flex justify-center gap-1 mb-6">
                   {[...Array(reviews[activeIndex].rating)].map((_, i) => (
-                    <Star key={i} size={16} className="fill-accent-gold text-accent-gold" />
+                    <Star key={i} size={15} className="fill-accent-gold text-accent-gold" />
                   ))}
                 </div>
 
                 {/* Review Text */}
-                <p className="text-text-main text-base md:text-lg font-light leading-relaxed italic mb-8">
+                <p className="text-text-main text-base md:text-lg font-light leading-relaxed italic mb-8 font-body">
                   &quot;{reviews[activeIndex].review}&quot;
                 </p>
 
                 {/* Author Info */}
                 <div>
-                  <h4 className="text-sm md:text-base font-heading font-bold text-accent-gold uppercase tracking-wider">
+                  <h4 className="text-sm md:text-base font-heading font-bold text-text-main uppercase tracking-wider">
                     {reviews[activeIndex].name}
                   </h4>
-                  <p className="text-xs text-text-muted mt-1 uppercase tracking-widest font-medium">
+                  <p className="text-xs text-text-muted mt-1 uppercase tracking-widest font-bold">
                     {reviews[activeIndex].role}
                   </p>
                 </div>
@@ -108,10 +108,10 @@ export default function Testimonials() {
           <div className="flex items-center gap-6 mt-8">
             <button
               onClick={handlePrev}
-              className="p-3 rounded-full border border-white/10 hover:border-accent-gold/40 text-text-muted hover:text-accent-gold transition-all duration-300 clickable"
+              className="p-3 rounded-full border border-black/10 hover:border-text-main/40 text-text-muted hover:text-text-main bg-white shadow-sm transition-all duration-300 clickable"
               aria-label="Previous Testimonial"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} />
             </button>
 
             {/* Pagination Dots */}
@@ -120,8 +120,8 @@ export default function Testimonials() {
                 <button
                   key={idx}
                   onClick={() => setActiveIndex(idx)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    activeIndex === idx ? "bg-accent-gold w-6" : "bg-white/15"
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    activeIndex === idx ? "bg-text-main w-6" : "bg-black/10"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
@@ -130,10 +130,10 @@ export default function Testimonials() {
 
             <button
               onClick={handleNext}
-              className="p-3 rounded-full border border-white/10 hover:border-accent-gold/40 text-text-muted hover:text-accent-gold transition-all duration-300 clickable"
+              className="p-3 rounded-full border border-black/10 hover:border-text-main/40 text-text-muted hover:text-text-main bg-white shadow-sm transition-all duration-300 clickable"
               aria-label="Next Testimonial"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={18} />
             </button>
           </div>
 
