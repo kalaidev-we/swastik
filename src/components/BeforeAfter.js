@@ -46,12 +46,16 @@ export default function BeforeAfter() {
   }, []);
 
   return (
-    <section className="py-24 bg-white relative">
+    <section className="py-24 bg-bg-main relative overflow-hidden border-b border-white/5">
+      {/* Background blueprint details */}
+      <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
+      <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
+
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
         
         {/* Title */}
         <div className="flex flex-col items-center text-center mb-16">
-          <span className="text-xs uppercase tracking-[0.25em] font-heading font-bold text-accent-gold mb-3">
+          <span className="text-xs uppercase tracking-[0.25em] font-mono font-bold text-accent-gold mb-3">
             Hardware Transformation
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-heading tracking-tight text-text-main">
@@ -62,8 +66,8 @@ export default function BeforeAfter() {
           </p>
         </div>
 
-        {/* Interactive Slider Box (Rounded card style) */}
-        <div className="flex justify-center">
+        {/* Interactive Slider Box (Embossed steel frame) */}
+        <div className="flex justify-center py-4">
           <div
             ref={containerRef}
             onMouseMove={handleMouseMove}
@@ -72,9 +76,14 @@ export default function BeforeAfter() {
             onTouchStart={handleStart}
             onMouseUp={handleEnd}
             onTouchEnd={handleEnd}
-            className="relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden border border-black/5 shadow-xl cursor-ew-resize select-none"
+            className="relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden steel-embossed shadow-2xl cursor-ew-resize select-none border border-white/10"
           >
-            
+            {/* corner rivets */}
+            <span className="rivet absolute top-2 left-2 z-40" />
+            <span className="rivet absolute top-2 right-2 z-40" />
+            <span className="rivet absolute bottom-2 left-2 z-40" />
+            <span className="rivet absolute bottom-2 right-2 z-40" />
+
             {/* 1. BEFORE LAYER: Grayscale Version */}
             <div className="absolute inset-0 z-10 pointer-events-none">
               <img
@@ -82,7 +91,7 @@ export default function BeforeAfter() {
                 alt="Before Installation"
                 className="w-full h-full object-cover filter grayscale contrast-125 brightness-75 select-none"
               />
-              <span className="absolute top-4 left-4 bg-black/65 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full text-xs font-heading font-bold uppercase tracking-wider text-white">
+              <span className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded text-[10px] font-mono font-bold uppercase tracking-widest text-text-muted">
                 Unfinished Space
               </span>
             </div>
@@ -99,21 +108,25 @@ export default function BeforeAfter() {
                 alt="After Installation"
                 className="w-full h-full object-cover select-none"
               />
-              <span className="absolute top-4 right-4 bg-text-main text-white px-3 py-1.5 rounded-full text-xs font-heading font-bold uppercase tracking-wider shadow-sm">
+              <span className="absolute top-4 right-4 bg-accent-gold text-bg-main px-3 py-1.5 rounded text-[10px] font-mono font-bold uppercase tracking-widest shadow-md">
                 Swastik Premium Fit
               </span>
             </div>
 
             {/* 3. SLIDER LINE & HANDLE */}
             <div
-              className="absolute top-0 bottom-0 z-30 w-1 bg-text-main/80 hover:bg-text-main transition-colors duration-75 ease-out"
+              className="absolute top-0 bottom-0 z-30 w-1 bg-accent-gold hover:bg-accent-gold/90 transition-colors duration-75 ease-out"
               style={{ left: `${sliderPosition}%` }}
             >
-              {/* Slider Handle Button */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-text-main border border-white flex items-center justify-center shadow-lg cursor-ew-resize">
-                <div className="flex gap-1 justify-center items-center">
-                  <span className="w-1 h-3 bg-white rounded-full" />
-                  <span className="w-1 h-3 bg-white rounded-full" />
+              {/* Slider Handle Button (Steel rivet styled plate with warning stripes) */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#22252A] border-2 border-accent-gold flex items-center justify-center shadow-[0_0_15px_rgba(255,107,0,0.4)] cursor-ew-resize">
+                {/* Warning stripes inside the handle for industrial feel */}
+                <div className="w-8 h-8 rounded-full overflow-hidden relative flex items-center justify-center">
+                  <div className="absolute inset-0 safety-stripes opacity-20" />
+                  <div className="flex gap-1.5 justify-center items-center z-10">
+                    <span className="w-1 h-3.5 bg-accent-gold rounded-full" />
+                    <span className="w-1 h-3.5 bg-accent-gold rounded-full" />
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useMemo, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Search, Check, Sparkles, MessageSquare, X } from "lucide-react";
 
 const CATEGORY_PRODUCTS = {
@@ -18,7 +18,7 @@ const CATEGORY_PRODUCTS = {
     { id: "ht4", name: "Concealed 180-Degree Pivot Hinge Set", brand: "Hafele" },
   ],
   "Adhesives & Waterproofing": [
-    { id: "aw1", name: "Fevicol Hi-Per Premium Wood Adhesive", brand: "Pidilite Fevicol" },
+    { id: "aw1", name: "Fevicol Hi-Per Wood Adhesive", brand: "Pidilite Fevicol" },
     { id: "aw2", name: "Multi-Purpose Neutral Silicone Sealant", brand: "Dow Corning" },
     { id: "aw3", name: "High-Strength Polyurethane (PU) Adhesive", brand: "Pidilite" },
     { id: "aw4", name: "Advanced Liquid Waterproofing Coating Membrane", brand: "Dr. Fixit" },
@@ -26,18 +26,18 @@ const CATEGORY_PRODUCTS = {
   "Modular Kitchen Fittings": [
     { id: "mk1", name: "Soft-Close Tandem Drawer Systems", brand: "Hettich / Ebco" },
     { id: "mk2", name: "Stainless Steel Wire Pull-out Kitchen Baskets", brand: "Ebco" },
-    { id: "mk3", name: "Kitchen Corner Magic Carousel Tray", brand: "Hafele / Sleek" },
+    { id: "mk3", name: "Kitchen Magic Carousel Corner Tray", brand: "Hafele / Sleek" },
     { id: "mk4", name: "Pneumatic Soft-Open Cabinet Flap Lift Fitting", brand: "Hafele / Hettich" },
   ],
   "Wardrobe Fittings": [
     { id: "wf1", name: "Heavy-Duty Sliding Wardrobe Top-Hung Track", brand: "Hettich" },
-    { id: "wf2", name: "Pull-Out Wardrobe Saree & Trouser Rack Organizer", brand: "Ebco" },
-    { id: "wf3", name: "Motion-Sensor Led Wardrobe Hanging Rail", brand: "Hafele" },
+    { id: "wf2", name: "Pull-Out Saree & Trouser Rack Organizer", brand: "Ebco" },
+    { id: "wf3", name: "Motion-Sensor Led Hanging Rail", brand: "Hafele" },
     { id: "wf4", name: "Soft-Close Tie, Belt & Accessory Organizer", brand: "Ebco" },
   ],
   "Bathroom Door Fittings": [
     { id: "bd1", name: "Rust-Resistant SS 304 Grade Privacy Deadbolt", brand: "Europa / Godrej" },
-    { id: "bd2", name: "Solid Brass Indicator Bathroom Lock (Occupied/Vacant)", brand: "Godrej" },
+    { id: "bd2", name: "Solid Brass Indicator Bathroom Lock", brand: "Godrej" },
     { id: "bd3", name: "Premium Glass-to-Glass Shower Hinge", brand: "Hafele" },
     { id: "bd4", name: "Satin Finish Anti-Corrosive Towel Ring", brand: "Ebco" },
   ],
@@ -154,6 +154,25 @@ const SYNONYMS = {
   "flush": "Flush Door Products",
 };
 
+// Parallax scroll component to shift cards at staggered speeds
+function ParallaxCard({ children, index }) {
+  const cardRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Alternating scroll offset heights (stagger columns)
+  const offset = index % 2 === 0 ? 30 : -30;
+  const y = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
+
+  return (
+    <motion.div ref={cardRef} style={{ y }} className="w-full">
+      {children}
+    </motion.div>
+  );
+}
+
 export default function Products() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
@@ -237,8 +256,11 @@ export default function Products() {
   };
 
   return (
-    <section id="products" className="py-24 bg-bg-main relative">
-      {/* Background glow highlights (extremely subtle) */}
+    <section id="products" className="py-24 bg-bg-main relative overflow-hidden border-b border-white/5">
+      {/* Background blueprint details */}
+      <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
+
+      {/* Background glow highlights */}
       <div className="absolute top-1/2 right-0 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
 
@@ -246,130 +268,148 @@ export default function Products() {
         
         {/* Title Block */}
         <div className="flex flex-col items-center text-center mb-16">
-          <span className="text-xs uppercase tracking-[0.25em] font-heading font-bold text-accent-gold mb-3">
-            Collections
+          <span className="text-xs uppercase tracking-[0.25em] font-mono font-bold text-accent-gold mb-3">
+            Collections Catalog
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight text-text-main">
-            Premium <span className="gold-gradient-text">Product Collections</span>
+            Premium Hardware <span className="gold-gradient-text">& Solutions</span>
           </h2>
           <p className="text-text-muted mt-4 max-w-xl font-light text-sm md:text-base leading-relaxed font-body">
-            Click on any collection category to browse specific products and request an instant WhatsApp quotation.
+            Browse through our architectural sourcing lists. Select a collection card to customize a direct WhatsApp enquiry sheet.
           </p>
         </div>
 
-        {/* AI Search & Filter Panel (White card style) */}
-        <div className="bg-white border border-black/5 p-6 rounded-2xl mb-12 flex flex-col md:flex-row gap-6 justify-between items-center shadow-sm">
-          
+        {/* AI Search & Filter Panel (Steel Plate Style) */}
+        <div className="steel-embossed p-6 rounded-2xl mb-16 flex flex-col lg:flex-row gap-6 justify-between items-center relative overflow-hidden">
+          {/* Rivets decoration */}
+          <span className="rivet absolute top-1.5 left-1.5" />
+          <span className="rivet absolute top-1.5 right-1.5" />
+          <span className="rivet absolute bottom-1.5 left-1.5" />
+          <span className="rivet absolute bottom-1.5 right-1.5" />
+
           {/* Smart Search Bar */}
-          <div className="relative w-full md:max-w-md flex items-center">
+          <div className="relative w-full lg:max-w-md flex items-center">
             <input
               type="text"
-              placeholder="AI Smart Search (e.g., glue, hettich, smart locks, hinges)..."
+              placeholder="AI search e.g., smart locks, adhesives, tandem drawer..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-bg-main text-text-main border border-black/5 focus:border-accent-gold/40 rounded-full py-3.5 pl-11 pr-20 outline-none text-sm tracking-wide font-body transition-colors"
+              className="w-full bg-black/40 text-text-main border border-white/5 focus:border-accent-gold/50 rounded-lg py-3.5 pl-11 pr-24 outline-none text-xs md:text-sm tracking-wide font-mono transition-colors"
             />
             <Search className="absolute left-4 text-text-muted" size={16} />
             
             {/* AI Status Badge */}
             {searchQuery && (
-              <div className="absolute right-3 flex items-center gap-1 bg-accent-gold/15 border border-accent-gold/25 px-2.5 py-0.5 rounded-full text-[10px] text-accent-gold font-heading font-bold">
+              <div className="absolute right-3 flex items-center gap-1 bg-accent-gold/15 border border-accent-gold/30 px-2.5 py-1 rounded-full text-[9px] text-accent-gold font-mono font-bold">
                 {isAiSearch ? (
                   <>
-                    <Sparkles size={10} className="animate-spin" />
-                    <span>AI Parsed</span>
+                    <Sparkles size={10} className="animate-spin text-accent-gold" />
+                    <span>AI PARSED</span>
                   </>
                 ) : (
-                  <span>Direct Match</span>
+                  <span>DIRECT</span>
                 )}
               </div>
             )}
           </div>
 
-          {/* Quick Filters */}
-          <div className="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end">
+          {/* Quick Filters (Monospace tab-like buttons) */}
+          <div className="flex flex-wrap gap-2 w-full lg:w-auto justify-start lg:justify-end">
             <button
               onClick={() => {
                 setActiveCategory("All");
                 setSearchQuery("");
               }}
-              className={`px-5 py-2.5 text-xs uppercase tracking-wider font-heading font-bold rounded-full border transition-all duration-300 ${
+              className={`px-4 py-2.5 text-[10px] uppercase tracking-widest font-mono font-bold rounded border transition-all duration-300 ${
                 activeCategory === "All"
-                  ? "bg-text-main border-text-main text-white"
-                  : "border-black/10 text-text-muted hover:text-text-main hover:border-black/20"
+                  ? "bg-accent-gold border-accent-gold text-bg-main shadow-[0_0_12px_rgba(255,107,0,0.3)]"
+                  : "border-white/10 text-text-muted hover:text-text-main hover:border-white/20"
               }`}
             >
-              All Collections
+              All Items
             </button>
-            {CATEGORIES.slice(0, 4).map((cat) => (
+            {CATEGORIES.slice(0, 5).map((cat) => (
               <button
                 key={cat.name}
                 onClick={() => {
                   setActiveCategory(cat.name);
                   setSearchQuery("");
                 }}
-                className={`px-5 py-2.5 text-xs uppercase tracking-wider font-heading font-bold rounded-full border transition-all duration-300 ${
+                className={`px-4 py-2.5 text-[10px] uppercase tracking-widest font-mono font-bold rounded border transition-all duration-300 ${
                   activeCategory === cat.name
-                    ? "bg-text-main border-text-main text-white"
-                    : "border-black/10 text-text-muted hover:text-text-main hover:border-black/20"
+                    ? "bg-accent-gold border-accent-gold text-bg-main shadow-[0_0_12px_rgba(255,107,0,0.3)]"
+                    : "border-white/10 text-text-muted hover:text-text-main hover:border-white/20"
                 }`}
               >
-                {cat.name.split(" ")[0]}
+                {cat.name.replace(" & Waterproofing", "").replace(" Fittings", "").replace(" & Tower Bolts", "")}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Categories Grid */}
+        {/* Categories Grid (with Parallax Layout Shift) */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 py-6"
         >
           <AnimatePresence mode="popLayout">
-            {filteredCategories.map((cat) => (
-              <motion.div
-                layout
-                key={cat.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                onClick={() => handleCardClick(cat.name)}
-                className="bg-white border border-black/5 hover:border-accent-gold/20 p-6 rounded-2xl flex flex-col justify-between aspect-[5/4] sm:aspect-square relative overflow-hidden group cursor-pointer shadow-sm hover:shadow-md transition-all duration-300 clickable select-none"
-              >
-                {/* Micro Border Glow */}
-                <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/15 rounded-2xl transition-all duration-300" />
-                
-                {/* SVG/Emoji Overlay Icon */}
-                <div className="flex justify-between items-start">
-                  <span className="text-3xl filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
-                    {cat.icon}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-widest text-text-main bg-bg-main px-3 py-1.5 rounded-full font-heading font-bold border border-black/5">
-                    Browse
-                  </span>
-                </div>
+            {filteredCategories.map((cat, idx) => (
+              <ParallaxCard key={cat.name} index={idx}>
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
+                  onClick={() => handleCardClick(cat.name)}
+                  className="steel-embossed hover:border-accent-gold/40 p-6 rounded-2xl flex flex-col justify-between aspect-[5/4] sm:aspect-square relative overflow-hidden group cursor-pointer transition-all duration-300 clickable select-none"
+                >
+                  {/* Micro Border Glow */}
+                  <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/10 rounded-2xl transition-all duration-300" />
+                  
+                  {/* Rivets at corners */}
+                  <span className="rivet absolute top-1.5 left-1.5" />
+                  <span className="rivet absolute top-1.5 right-1.5" />
+                  <span className="rivet absolute bottom-1.5 left-1.5" />
+                  <span className="rivet absolute bottom-1.5 right-1.5" />
 
-                <div className="mt-6">
-                  <h3 className="text-lg md:text-xl font-bold font-heading text-text-main tracking-tight group-hover:text-accent-gold transition-colors duration-300">
-                    {cat.name}
-                  </h3>
-                  <p className="text-[10px] tracking-widest text-text-muted uppercase font-heading font-bold mt-1">
-                    {cat.tagline}
-                  </p>
-                  <p className="text-xs text-text-muted font-light leading-relaxed mt-3 line-clamp-3 font-body">
-                    {cat.description}
-                  </p>
-                </div>
-              </motion.div>
+                  {/* Icon and tag */}
+                  <div className="flex justify-between items-start">
+                    <span className="text-3xl filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                      {cat.icon}
+                    </span>
+                    <span className="text-[9px] uppercase tracking-widest text-accent-gold font-mono font-bold border border-accent-gold/20 px-2.5 py-1 bg-black/20 rounded">
+                      Inspect
+                    </span>
+                  </div>
+
+                  {/* Content details */}
+                  <div className="mt-6">
+                    <h3 className="text-lg md:text-xl font-bold font-heading text-text-main tracking-tight group-hover:text-accent-gold transition-colors duration-300">
+                      {cat.name}
+                    </h3>
+                    <p className="text-[9px] tracking-widest text-text-muted uppercase font-mono font-bold mt-1">
+                      {cat.tagline}
+                    </p>
+                    <p className="text-xs text-text-muted font-light leading-relaxed mt-3 line-clamp-3 font-body">
+                      {cat.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </ParallaxCard>
             ))}
           </AnimatePresence>
         </motion.div>
 
         {/* Empty Search State */}
         {filteredCategories.length === 0 && (
-          <div className="text-center py-16 bg-white border border-black/5 rounded-2xl shadow-sm">
-            <p className="text-text-muted font-heading text-base">
+          <div className="text-center py-16 steel-embossed rounded-2xl relative overflow-hidden">
+            <span className="rivet absolute top-1.5 left-1.5" />
+            <span className="rivet absolute top-1.5 right-1.5" />
+            <span className="rivet absolute bottom-1.5 left-1.5" />
+            <span className="rivet absolute bottom-1.5 right-1.5" />
+
+            <p className="text-text-muted font-mono text-sm">
               No categories found matching &quot;{searchQuery}&quot;
             </p>
             <button
@@ -377,7 +417,7 @@ export default function Products() {
                 setSearchQuery("");
                 setActiveCategory("All");
               }}
-              className="mt-4 text-xs uppercase tracking-wider text-text-main hover:text-accent-gold font-heading font-bold transition-colors"
+              className="mt-4 text-[10px] uppercase tracking-widest text-accent-gold hover:text-white font-mono font-bold transition-colors"
             >
               Clear Filters & Search
             </button>
@@ -396,21 +436,27 @@ export default function Products() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedCategoryName(null)}
-              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/75 backdrop-blur-md"
             />
 
-            {/* Modal Box (Pure White Apple style) */}
+            {/* Modal Box (Tactile Steel Plate) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative bg-white border border-black/5 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh]"
+              className="relative steel-embossed w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh] border border-white/10"
             >
+              {/* Rivets Decoration inside Modal */}
+              <span className="rivet absolute top-2 left-2" />
+              <span className="rivet absolute top-2 right-2" />
+              <span className="rivet absolute bottom-2 left-2" />
+              <span className="rivet absolute bottom-2 right-2" />
+
               {/* Header */}
-              <div className="p-6 border-b border-black/5 flex justify-between items-start bg-bg-main/50">
-                <div>
-                  <span className="text-[10px] tracking-widest text-accent-gold uppercase font-heading font-bold">
-                    Enquire Collection
+              <div className="p-6 border-b border-white/5 flex justify-between items-start bg-black/20">
+                <div className="pr-4">
+                  <span className="text-[9px] tracking-widest text-accent-gold uppercase font-mono font-bold">
+                    ESTIMATION SPEC SHEET
                   </span>
                   <h3 className="text-xl md:text-2xl font-bold font-heading text-text-main tracking-tight mt-1">
                     {selectedCategoryName}
@@ -418,16 +464,16 @@ export default function Products() {
                 </div>
                 <button
                   onClick={() => setSelectedCategoryName(null)}
-                  className="p-1.5 rounded-full text-text-muted hover:text-text-main hover:bg-black/5 transition-colors clickable"
+                  className="p-1.5 rounded-full text-text-muted hover:text-white hover:bg-white/5 transition-colors clickable"
                 >
                   <X size={18} />
                 </button>
               </div>
 
               {/* Body: Selectable Products Checklist */}
-              <div className="p-6 overflow-y-auto flex-1 space-y-4">
+              <div className="p-6 overflow-y-auto flex-1 space-y-4 custom-scrollbar">
                 <p className="text-xs text-text-muted leading-relaxed font-body">
-                  Select the products you are interested in. We will compile them into a pre-formatted WhatsApp text message for an instant quotation.
+                  Select item configurations to compile. We will format a direct technical query with genuine brands to fetch current dealer pricing in Erode.
                 </p>
 
                 <div className="space-y-2 mt-4">
@@ -439,26 +485,26 @@ export default function Products() {
                         onClick={() => handleCheckboxChange(p.id)}
                         className={`flex items-center justify-between p-4 rounded-xl border cursor-pointer select-none transition-all duration-300 ${
                           isChecked
-                            ? "bg-bg-main border-text-main"
-                            : "bg-white border-black/5 hover:border-black/10"
+                            ? "bg-accent-gold/10 border-accent-gold"
+                            : "bg-black/20 border-white/5 hover:border-white/15"
                         }`}
                       >
-                        <div>
+                        <div className="pr-2">
                           <p className="text-sm font-heading font-semibold text-text-main">
                             {p.name}
                           </p>
-                          <p className="text-[10px] tracking-wider text-text-muted uppercase mt-0.5 font-heading">
-                            Brand: {p.brand}
+                          <p className="text-[9px] tracking-widest text-text-muted uppercase mt-1 font-mono">
+                            Brand Spec: {p.brand}
                           </p>
                         </div>
                         <div
-                          className={`w-5 h-5 rounded-full flex items-center justify-center border transition-all ${
+                          className={`w-5 h-5 rounded flex items-center justify-center border transition-all shrink-0 ${
                             isChecked
-                              ? "bg-text-main border-text-main text-white"
-                              : "border-black/10 bg-transparent"
+                              ? "bg-accent-gold border-accent-gold text-bg-main"
+                              : "border-white/20 bg-transparent"
                           }`}
                         >
-                          {isChecked && <Check size={12} strokeWidth={3} />}
+                          {isChecked && <Check size={12} strokeWidth={3} className="text-bg-main" />}
                         </div>
                       </div>
                     );
@@ -467,19 +513,19 @@ export default function Products() {
               </div>
 
               {/* Footer Actions */}
-              <div className="p-6 border-t border-black/5 flex flex-col gap-3 bg-bg-main/50">
+              <div className="p-6 border-t border-white/5 flex flex-col gap-3 bg-black/20">
                 <button
                   onClick={sendWhatsAppEnquiry}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 bg-text-main hover:bg-text-main/90 text-white rounded-full font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-sm clickable"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 bg-accent-gold hover:bg-accent-gold/90 text-bg-main rounded-lg font-mono font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(255,107,0,0.3)] clickable"
                 >
-                  <MessageSquare size={16} />
-                  <span>Enquire via WhatsApp</span>
+                  <MessageSquare size={14} className="text-bg-main" />
+                  <span>Send Enquiry Sheet</span>
                 </button>
                 <button
                   onClick={() => setSelectedCategoryName(null)}
-                  className="w-full py-2.5 text-xs font-heading font-bold uppercase tracking-widest text-text-muted hover:text-text-main transition-colors clickable"
+                  className="w-full py-2.5 text-[10px] font-mono font-bold uppercase tracking-widest text-text-muted hover:text-white transition-colors clickable"
                 >
-                  Cancel
+                  Dismiss
                 </button>
               </div>
 

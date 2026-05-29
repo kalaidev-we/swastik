@@ -85,9 +85,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-bg-main relative pt-20 pb-8 border-t border-black/5">
-      {/* Decorative top border line */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-black/5" />
+    <footer className="bg-bg-main relative pt-20 pb-8 border-t border-white/5 overflow-hidden">
+      {/* Background blueprint details */}
+      <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16">
         
@@ -98,10 +98,10 @@ export default function Footer() {
             onClick={(e) => handleNavClick(e, "home")}
             className="flex flex-col group clickable"
           >
-            <span className="text-2xl font-bold font-luxury tracking-widest text-text-main group-hover:text-accent-gold transition-colors duration-300">
+            <span className="text-2xl font-bold font-heading tracking-widest text-text-main group-hover:text-accent-gold transition-colors duration-300">
               SWASTIK
             </span>
-            <span className="text-[11px] tracking-[0.25em] text-accent-gold font-heading -mt-1 font-medium">
+            <span className="text-[11px] tracking-[0.25em] text-accent-gold font-mono -mt-1 font-bold">
               & COMPANY
             </span>
           </a>
@@ -109,7 +109,7 @@ export default function Footer() {
             Erode&apos;s premier destination for high-end architectural hardware, modular drawer channels, security locks, and specialized wood adhesives. Elevating residential and commercial projects since 1991.
           </p>
 
-          {/* Social Links */}
+          {/* Social Links (Steel Embossed circle links) */}
           <div className="flex gap-3 mt-4">
             {socialLinks.map((social, idx) => {
               return (
@@ -118,9 +118,10 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-white border border-black/5 hover:border-accent-gold/30 hover:bg-accent-gold/10 text-text-muted hover:text-accent-gold flex items-center justify-center transition-all duration-300 clickable"
+                  className="w-9 h-9 rounded-full steel-embossed hover:border-accent-gold/40 text-text-muted hover:text-accent-gold flex items-center justify-center transition-all duration-300 clickable relative"
                   title={social.name}
                 >
+                  <span className="rivet absolute top-0.5 left-0.5" className="scale-50 opacity-40" />
                   {social.svg}
                 </a>
               );
@@ -130,7 +131,7 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div className="lg:col-span-2">
-          <h4 className="text-xs uppercase tracking-widest text-text-main font-heading font-bold mb-6">
+          <h4 className="text-[10px] uppercase tracking-widest text-text-main font-mono font-bold mb-6">
             Quick Links
           </h4>
           <ul className="space-y-3">
@@ -146,7 +147,7 @@ export default function Footer() {
                 <a
                   href={`#${link.id}`}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className="text-xs text-text-muted hover:text-text-main transition-colors duration-300 font-light block py-0.5 clickable"
+                  className="text-xs text-text-muted hover:text-accent-gold transition-colors duration-300 font-light block py-0.5 clickable"
                 >
                   {link.name}
                 </a>
@@ -157,7 +158,7 @@ export default function Footer() {
 
         {/* Product Categories */}
         <div className="lg:col-span-2">
-          <h4 className="text-xs uppercase tracking-widest text-text-main font-heading font-bold mb-6">
+          <h4 className="text-[10px] uppercase tracking-widest text-text-main font-mono font-bold mb-6">
             Fittings Range
           </h4>
           <ul className="space-y-3">
@@ -173,7 +174,7 @@ export default function Footer() {
                 <a
                   href="#products"
                   onClick={(e) => handleNavClick(e, "products")}
-                  className="text-xs text-text-muted hover:text-text-main transition-colors duration-300 font-light block py-0.5 clickable"
+                  className="text-xs text-text-muted hover:text-accent-gold transition-colors duration-300 font-light block py-0.5 clickable"
                 >
                   {item}
                 </a>
@@ -185,7 +186,7 @@ export default function Footer() {
         {/* Catalogue Lead Generation */}
         <div className="lg:col-span-4 flex flex-col gap-6">
           <div>
-            <h4 className="text-xs uppercase tracking-widest text-text-main font-heading font-bold mb-2">
+            <h4 className="text-[10px] uppercase tracking-widest text-text-main font-mono font-bold mb-2">
               Sourcing Catalogue
             </h4>
             <p className="text-xs text-text-muted leading-relaxed font-light font-body">
@@ -200,24 +201,24 @@ export default function Footer() {
               value={downloadInput}
               onChange={(e) => setDownloadInput(e.target.value)}
               required
-              className="w-full bg-white border border-black/10 focus:border-accent-gold/45 rounded-full py-3.5 pl-4 pr-16 outline-none text-xs text-text-main tracking-wider font-body transition-colors"
+              className="w-full bg-black/35 border border-white/5 focus:border-accent-gold/50 rounded-lg py-3.5 pl-4 pr-16 outline-none text-xs text-text-main tracking-wider font-body transition-colors"
             />
             <button
               type="submit"
               disabled={downloadState === "loading"}
-              className="absolute right-1 p-2.5 rounded-full bg-text-main hover:bg-text-main/90 text-white font-heading font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center clickable disabled:opacity-50"
+              className="absolute right-1 w-10 h-10 rounded-md bg-accent-gold hover:bg-accent-gold/90 text-bg-main font-heading font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center clickable disabled:opacity-50"
               aria-label="Download Catalogue"
             >
               {downloadState === "loading" ? (
-                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <span className="w-4 h-4 border-2 border-bg-main border-t-transparent rounded-full animate-spin" />
               ) : (
-                <Download size={14} />
+                <Download size={14} className="text-bg-main" />
               )}
             </button>
           </form>
           {downloadState === "done" && (
-            <p className="text-xs text-accent-gold font-heading -mt-3 animate-pulse">
-              Download starting... Check your downloads folder.
+            <p className="text-xs text-accent-gold font-mono -mt-3 animate-pulse uppercase tracking-wider font-bold">
+              Download starting...
             </p>
           )}
         </div>
@@ -225,14 +226,14 @@ export default function Footer() {
       </div>
 
       {/* Copyright & Scroll Top Row */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-        <p className="text-[10px] text-text-muted font-heading tracking-wider">
-          © 2026 Swastik Trading Company. All Rights Reserved. | Designed with Minimalist Luxury.
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left relative z-10">
+        <p className="text-[10px] text-text-muted font-mono tracking-wider">
+          © 2026 Swastik Trading Company. All Rights Reserved. | Designed with Raw Industrial Modern theme.
         </p>
         
         <button
           onClick={handleScrollTop}
-          className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-text-muted hover:text-text-main transition-colors font-heading font-bold clickable"
+          className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-text-muted hover:text-accent-gold transition-colors font-mono font-bold clickable"
         >
           <span>Back to Top</span>
           <ArrowUp size={12} />

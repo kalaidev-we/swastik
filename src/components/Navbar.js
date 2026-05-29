@@ -67,7 +67,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "py-4 bg-white/80 backdrop-blur-md border-b border-black/5 shadow-sm"
+          ? "py-4 bg-bg-card/90 backdrop-blur-md border-b border-accent-gold/15 shadow-2xl"
           : "py-6 bg-transparent"
       }`}
     >
@@ -78,10 +78,10 @@ export default function Navbar() {
           onClick={(e) => handleNavClick(e, "#home")}
           className="flex flex-col group clickable"
         >
-          <span className="text-xl font-bold font-luxury tracking-widest text-text-main group-hover:text-accent-gold transition-colors duration-300">
+          <span className="text-xl font-bold font-heading tracking-widest text-text-main group-hover:text-accent-gold transition-colors duration-300">
             SWASTIK
           </span>
-          <span className="text-[10px] tracking-[0.25em] text-accent-gold font-heading -mt-1 font-medium">
+          <span className="text-[10px] tracking-[0.25em] text-accent-gold font-mono -mt-1 font-bold">
             & COMPANY
           </span>
         </a>
@@ -94,15 +94,15 @@ export default function Navbar() {
                 <a
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`text-xs tracking-wider uppercase transition-all duration-300 relative py-1 font-heading font-semibold clickable ${
+                  className={`text-xs tracking-wider uppercase transition-all duration-300 relative py-1 font-mono font-bold clickable ${
                     activeSection === item.href.substring(1)
-                      ? "text-text-main"
+                      ? "text-accent-gold"
                       : "text-text-muted hover:text-text-main"
                   }`}
                 >
                   {item.name}
                   {activeSection === item.href.substring(1) && (
-                    <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-text-main rounded" />
+                    <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-accent-gold rounded" />
                   )}
                 </a>
               </li>
@@ -111,7 +111,7 @@ export default function Navbar() {
 
           <button
             onClick={openWhatsApp}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-text-main hover:bg-text-main/90 text-white text-xs font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-sm clickable"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent-gold hover:bg-accent-gold/90 text-bg-main text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_0_15px_rgba(255,107,0,0.35)] clickable"
           >
             <PhoneCall size={14} />
             <span>Enquire Now</span>
@@ -122,7 +122,7 @@ export default function Navbar() {
         <div className="lg:hidden flex items-center gap-4">
           <button
             onClick={openWhatsApp}
-            className="p-2.5 rounded-full bg-text-main text-white hover:scale-105 transition-all duration-300 clickable"
+            className="p-2.5 rounded-full bg-accent-gold text-bg-main hover:scale-105 transition-all duration-300 clickable"
             aria-label="WhatsApp Enquiry"
           >
             <PhoneCall size={14} />
@@ -140,7 +140,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 top-[73px] bg-white/98 backdrop-blur-lg z-45 transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 top-[73px] bg-bg-card/98 backdrop-blur-lg z-45 transition-all duration-500 lg:hidden ${
           isMobileMenuOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-8 pointer-events-none"
@@ -152,9 +152,9 @@ export default function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-base tracking-widest uppercase font-heading font-bold block py-2 border-b border-black/5 clickable ${
+                className={`text-base tracking-widest uppercase font-mono font-bold block py-2 border-b border-white/5 clickable ${
                   activeSection === item.href.substring(1)
-                    ? "text-text-main"
+                    ? "text-accent-gold"
                     : "text-text-muted"
                 }`}
               >
@@ -165,7 +165,7 @@ export default function Navbar() {
           <li className="w-full mt-4 flex justify-center">
             <button
               onClick={openWhatsApp}
-              className="w-full max-w-xs flex items-center justify-center gap-2 py-3.5 bg-text-main text-white rounded-full font-heading font-bold uppercase tracking-widest transition-all duration-300 clickable"
+              className="w-full max-w-xs flex items-center justify-center gap-2 py-3.5 bg-accent-gold text-bg-main rounded-full font-mono font-bold uppercase tracking-widest transition-all duration-300 clickable"
             >
               <PhoneCall size={16} />
               <span>WhatsApp Chat</span>

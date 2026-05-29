@@ -1,161 +1,134 @@
 "use client";
 
 import { useMemo } from "react";
+import Image from "next/image";
+
+// Import all 36 brand WebP images statically
+import brand1 from "./assets/brand (1).webp";
+import brand2 from "./assets/brand (2).webp";
+import brand3 from "./assets/brand (3).webp";
+import brand4 from "./assets/brand (4).webp";
+import brand5 from "./assets/brand (5).webp";
+import brand6 from "./assets/brand (6).webp";
+import brand7 from "./assets/brand (7).webp";
+import brand8 from "./assets/brand (8).webp";
+import brand9 from "./assets/brand (9).webp";
+import brand10 from "./assets/brand (10).webp";
+import brand11 from "./assets/brand (11).webp";
+import brand12 from "./assets/brand (12).webp";
+import brand13 from "./assets/brand (13).webp";
+import brand14 from "./assets/brand (14).webp";
+import brand15 from "./assets/brand (15).webp";
+import brand16 from "./assets/brand (16).webp";
+import brand17 from "./assets/brand (17).webp";
+import brand18 from "./assets/brand (18).webp";
+import brand19 from "./assets/brand (19).webp";
+import brand20 from "./assets/brand (20).webp";
+import brand21 from "./assets/brand (21).webp";
+import brand22 from "./assets/brand (22).webp";
+import brand23 from "./assets/brand (23).webp";
+import brand24 from "./assets/brand (24).webp";
+import brand25 from "./assets/brand (25).webp";
+import brand26 from "./assets/brand (26).webp";
+import brand27 from "./assets/brand (27).webp";
+import brand28 from "./assets/brand (28).webp";
+import brand29 from "./assets/brand (29).webp";
+import brand30 from "./assets/brand (30).webp";
+import brand31 from "./assets/brand (31).webp";
+import brand32 from "./assets/brand (32).webp";
+import brand33 from "./assets/brand (33).webp";
+import brand34 from "./assets/brand (34).webp";
+import brand35 from "./assets/brand (35).webp";
+import brand36 from "./assets/brand (36).webp";
 
 export default function Brands() {
-  const brandsData = useMemo(() => [
-    {
-      name: "Hafele",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-[#D32F2F]" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="'Space Grotesk', sans-serif" fontWeight="900" fontSize="20" letterSpacing="1.5">HÄFELE</text>
-        </svg>
-      )
-    },
-    {
-      name: "Hettich",
-      logo: (
-        <svg className="h-7 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-blue-900" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="serif, Times, Georgia" fontWeight="bold" fontStyle="italic" fontSize="24">Hettich</text>
-        </svg>
-      )
-    },
-    {
-      name: "Ebco",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-gray-950" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="'Space Grotesk', sans-serif" fontWeight="800" fontSize="24" letterSpacing="-1">ebco</text>
-          <circle cx="58" cy="8" r="3.5" className="fill-slate-400 group-hover:fill-[#E53935] transition-colors duration-300" />
-        </svg>
-      )
-    },
-    {
-      name: "Faber",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-gray-900" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="4" width="18" height="18" rx="3" className="fill-slate-400 group-hover:fill-[#E53935] transition-colors duration-300" />
-          <path d="M5 13 L13 13 M9 9 L9 17" stroke="white" strokeWidth="2" />
-          <text x="26" y="20" fontFamily="'Space Grotesk', sans-serif" fontWeight="700" fontSize="18" letterSpacing="1">FABER</text>
-        </svg>
-      )
-    },
-    {
-      name: "Godrej",
-      logo: (
-        <svg className="h-7 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-[#005A9C]" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="'Georgia', 'Times New Roman', serif" fontWeight="bold" fontStyle="italic" fontSize="24">Godrej</text>
-        </svg>
-      )
-    },
-    {
-      name: "Fevicol",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-blue-800" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 18 C6 10, 16 10, 20 13 C16 9, 8 9, 3 13" className="fill-slate-400 group-hover:fill-[#1565C0] transition-colors duration-300" />
-          <text x="26" y="20" fontFamily="'Space Grotesk', sans-serif" fontWeight="950" fontSize="18" letterSpacing="0.5">FEVICOL</text>
-        </svg>
-      )
-    },
-    {
-      name: "Europa",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-gray-900" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="'Space Grotesk', sans-serif" fontWeight="800" fontSize="20" letterSpacing="1.5">EUROPA</text>
-        </svg>
-      )
-    },
-    {
-      name: "Ajax",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-amber-800" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="'Space Grotesk', sans-serif" fontWeight="800" fontSize="22" letterSpacing="1.5">AJAX</text>
-        </svg>
-      )
-    },
-    {
-      name: "Sleek",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-gray-900" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="'Inter', sans-serif" fontWeight="300" fontSize="22" letterSpacing="1">sleek</text>
-          <circle cx="58" cy="18" r="2.5" className="fill-slate-400 group-hover:fill-[#E53935] transition-colors duration-300" />
-        </svg>
-      )
-    },
-    {
-      name: "Magnum",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-[#8E7044]" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="2,18 4,10 7,14 10,10 12,18" className="fill-slate-400 group-hover:fill-[#8E7044] transition-colors duration-300" />
-          <text x="18" y="22" fontFamily="'Space Grotesk', sans-serif" fontWeight="700" fontSize="16" letterSpacing="1">MAGNUM</text>
-        </svg>
-      )
-    },
-    {
-      name: "Royalmax",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-[#B5945B]" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="2,14 5,8 8,11 11,8 14,14" className="fill-slate-400 group-hover:fill-[#B5945B] transition-colors duration-300" />
-          <text x="20" y="22" fontFamily="'Space Grotesk', sans-serif" fontWeight="700" fontSize="16" letterSpacing="0.5">ROYALMAX</text>
-        </svg>
-      )
-    },
-    {
-      name: "Archis",
-      logo: (
-        <svg className="h-6 w-auto transition-colors duration-300 fill-current text-slate-400 group-hover:text-gray-900" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" fontFamily="'Space Grotesk', sans-serif" fontWeight="300" fontSize="20" letterSpacing="2">ARCHIS</text>
-        </svg>
-      )
-    }
+  const brandImages = useMemo(() => [
+    brand1, brand2, brand3, brand4, brand5, brand6, brand7, brand8, brand9, brand10,
+    brand11, brand12, brand13, brand14, brand15, brand16, brand17, brand18, brand19, brand20,
+    brand21, brand22, brand23, brand24, brand25, brand26, brand27, brand28, brand29, brand30,
+    brand31, brand32, brand33, brand34, brand35, brand36
   ], []);
 
-  const scrollBrands = useMemo(() => [...brandsData, ...brandsData, ...brandsData], [brandsData]);
+  // Duplicate list to ensure smooth infinite loop scroll
+  const scrollBrands = useMemo(() => [...brandImages, ...brandImages, ...brandImages], [brandImages]);
 
   return (
-    <section id="brands" className="py-20 bg-white border-y border-black/5 overflow-hidden relative">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 mb-10 text-center">
-        <span className="text-xs uppercase tracking-[0.25em] font-heading font-bold text-accent-gold mb-3 block">
-          Partners
+    <section id="brands" className="py-24 bg-bg-main overflow-hidden relative border-y border-white/5">
+      {/* Background blueprint details */}
+      <div className="absolute inset-0 blueprint-sheet opacity-40 pointer-events-none" />
+
+      {/* Decorative Top Safety Stripes */}
+      <div className="h-1.5 w-full safety-stripes opacity-80 relative z-10" />
+
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 my-12 text-center relative z-10">
+        <span className="text-xs uppercase tracking-[0.25em] font-mono font-bold text-accent-gold mb-3 block">
+          Authorized Sourcing
         </span>
-        <h2 className="text-2xl sm:text-3xl font-bold font-heading tracking-tight text-text-main">
-          Trusted Premium Brands
+        <h2 className="text-3xl sm:text-4xl font-bold font-heading tracking-tight text-text-main">
+          30+ Premium Hardware Brands <span className="text-accent-gold">Under One Roof</span>
         </h2>
+        <p className="text-text-muted mt-4 max-w-xl mx-auto font-light text-sm md:text-base leading-relaxed font-body">
+          We deal directly with manufacturers to guarantee genuine products, complete catalog access, and full warranty coverage.
+        </p>
       </div>
 
       {/* Infinite Scrolling Container */}
-      <div className="relative flex flex-col gap-6 select-none pointer-events-auto">
+      <div className="relative flex flex-col gap-8 select-none pointer-events-auto z-10 py-4">
         {/* Row 1 - Forward Scroll */}
-        <div className="flex w-max gap-6 animate-marquee hover:[animation-play-state:paused]">
-          {scrollBrands.map((brand, idx) => (
+        <div className="flex w-max gap-8 animate-marquee hover:[animation-play-state:paused]">
+          {scrollBrands.slice(0, 54).map((brand, idx) => (
             <div
-              key={`forward-${brand.name}-${idx}`}
-              className="flex items-center justify-center px-10 py-5 bg-bg-main border border-black/5 hover:border-accent-gold/30 hover:bg-white rounded-xl shadow-sm transition-all duration-300 group min-w-[200px]"
+              key={`f-${idx}`}
+              className="flex items-center justify-center px-8 py-5 steel-embossed hover:border-accent-gold/40 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden"
             >
-              <div className="transform group-hover:scale-105 transition-transform duration-300">
-                {brand.logo}
+              {/* corner rivets for tactile detail */}
+              <span className="rivet absolute top-1.5 left-1.5" />
+              <span className="rivet absolute top-1.5 right-1.5" />
+              <span className="rivet absolute bottom-1.5 left-1.5" />
+              <span className="rivet absolute bottom-1.5 right-1.5" />
+
+              <div className="transform group-hover:scale-105 transition-transform duration-300 flex items-center justify-center w-full h-full">
+                <Image
+                  src={brand}
+                  alt="Swastik Hardware Partner Logo"
+                  className="max-h-[50px] w-auto max-w-[130px] object-contain filter brightness-0 invert opacity-40 group-hover:opacity-100 group-hover:filter-none transition-all duration-500"
+                />
               </div>
             </div>
           ))}
         </div>
 
         {/* Row 2 - Reverse Scroll */}
-        <div className="flex w-max gap-6 animate-marquee-reverse hover:[animation-play-state:paused]">
-          {scrollBrands.map((brand, idx) => (
+        <div className="flex w-max gap-8 animate-marquee-reverse hover:[animation-play-state:paused]">
+          {scrollBrands.slice(54).map((brand, idx) => (
             <div
-              key={`reverse-${brand.name}-${idx}`}
-              className="flex items-center justify-center px-10 py-5 bg-bg-main border border-black/5 hover:border-accent-gold/30 hover:bg-white rounded-xl shadow-sm transition-all duration-300 group min-w-[200px]"
+              key={`r-${idx}`}
+              className="flex items-center justify-center px-8 py-5 steel-embossed hover:border-accent-gold/40 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden"
             >
-              <div className="transform group-hover:scale-105 transition-transform duration-300">
-                {brand.logo}
+              {/* corner rivets for tactile detail */}
+              <span className="rivet absolute top-1.5 left-1.5" />
+              <span className="rivet absolute top-1.5 right-1.5" />
+              <span className="rivet absolute bottom-1.5 left-1.5" />
+              <span className="rivet absolute bottom-1.5 right-1.5" />
+
+              <div className="transform group-hover:scale-105 transition-transform duration-300 flex items-center justify-center w-full h-full">
+                <Image
+                  src={brand}
+                  alt="Swastik Hardware Partner Logo"
+                  className="max-h-[50px] w-auto max-w-[130px] object-contain filter brightness-0 invert opacity-40 group-hover:opacity-100 group-hover:filter-none transition-all duration-500"
+                />
               </div>
             </div>
           ))}
         </div>
       </div>
 
+      {/* Decorative Bottom Safety Stripes */}
+      <div className="h-1.5 w-full safety-stripes opacity-80 mt-12 relative z-10" />
+
       {/* Fade Overlays on sides for cinematic transition */}
-      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg-main to-transparent z-20 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg-main to-transparent z-20 pointer-events-none" />
     </section>
   );
 }
