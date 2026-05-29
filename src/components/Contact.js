@@ -33,7 +33,7 @@ export default function Contact() {
     const whatsappMsg = `Hello Swastik & Company,\n\nI would like to make an enquiry:\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Profession:* ${formData.profession}\n*Message:* ${formData.message || "N/A"}\n\nSent from your website contact form.`;
     
     const encodedMsg = encodeURIComponent(whatsappMsg);
-    window.open(`https://wa.me/919363528393?text=${encodedMsg}`, "_blank");
+    window.open(`https://wa.me/919962470959?text=${encodedMsg}`, "_blank");
     setFormSubmitted(true);
   };
 
@@ -105,10 +105,9 @@ export default function Contact() {
                     <Phone size={18} />
                   </div>
                   <div>
-                    <h4 className="text-[10px] uppercase tracking-widest text-text-muted font-mono font-bold">Phone Numbers</h4>
+                    <h4 className="text-[10px] uppercase tracking-widest text-text-muted font-mono font-bold">Phone Number</h4>
                     <p className="text-sm text-text-main font-light mt-1 font-body">
-                      <span className="font-heading font-bold text-accent-gold">93635 28393</span> (Shop Enquiry) <br />
-                      <span className="font-heading font-bold text-text-main">63749 76158</span> (Retail / Wholesale)
+                      <span className="font-heading font-bold text-accent-gold">99624 70959</span> (Showroom Sourcing & Enquiry)
                     </p>
                   </div>
                 </div>
@@ -292,7 +291,7 @@ export default function Contact() {
         <button
           onClick={() => {
             const text = encodeURIComponent("Hello Swastik & Company, I would like to make an enquiry.");
-            window.open(`https://wa.me/919363528393?text=${text}`, "_blank");
+            window.open(`https://wa.me/919962470959?text=${text}`, "_blank");
           }}
           className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-[0_4px_20px_rgba(37,211,102,0.3)] hover:shadow-[0_4px_30px_rgba(37,211,102,0.5)] hover:scale-110 transition-all duration-300 relative group clickable"
           aria-label="Direct WhatsApp Contact"

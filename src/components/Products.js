@@ -264,7 +264,7 @@ export default function Products() {
     text += `\nPlease let me know about pricing, availability, and delivery options in Erode. Thanks!`;
 
     const encodedText = encodeURIComponent(text);
-    window.open(`https://wa.me/919363528393?text=${encodedText}`, "_blank");
+    window.open(`https://wa.me/919962470959?text=${encodedText}`, "_blank");
   };
 
   return (

@@ -60,7 +60,7 @@ export default function Navbar() {
 
   const openWhatsApp = () => {
     const message = encodeURIComponent("Hello Swastik & Company, I would like to make an enquiry about your premium architectural hardware products.");
-    window.open(`https://wa.me/919363528393?text=${message}`, "_blank");
+    window.open(`https://wa.me/919962470959?text=${message}`, "_blank");
   };
 
   return (

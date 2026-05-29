@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
     "@type": "LocalBusiness",
     "name": "Swastik Trading Company - Mr. Locks",
     "image": "https://swastikandcompany.in/hero_showroom.png",
-    "telephone": "919363528393",
+    "telephone": "919962470959",
     "email": "swastiktradingcompany1991@gmail.com",
     "address": {
       "@type": "PostalAddress",
