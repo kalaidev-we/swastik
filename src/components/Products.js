@@ -61,48 +61,56 @@ const CATEGORIES = [
     description: "Premium locks, smart security systems and elegant handles for modern spaces.",
     tagline: "High Security & Elegance",
     icon: "🔑",
+    image: "/product_locks.png",
   },
   {
     name: "Hinges & Tower Bolts",
     description: "Heavy-duty durable fittings designed for long-term structural reliability.",
     tagline: "Smooth Motion & Strength",
     icon: "🔩",
+    image: "/product_hinges.png",
   },
   {
     name: "Adhesives & Waterproofing",
     description: "Professional bonding and moisture protection solutions for solid build quality.",
     tagline: "Undivided Bonding Strength",
     icon: "🧪",
+    image: "/product_adhesives.png",
   },
   {
     name: "Modular Kitchen Fittings",
     description: "Modern kitchen accessories, soft-close drawers, and premium modular hardware.",
     tagline: "Smart Storage Layouts",
     icon: "🍳",
+    image: "/product_kitchen.png",
   },
   {
     name: "Wardrobe Fittings",
     description: "Elegant storage organizing accessories with smooth sliding functionality.",
     tagline: "Luxury Organizers",
     icon: "👔",
+    image: "/product_wardrobe.png",
   },
   {
     name: "Bathroom Door Fittings",
     description: "Rust-resistant premium bathroom door accessories and hardware fittings.",
     tagline: "Anti-Corrosive Finish",
     icon: "🚿",
+    image: "/product_bathroom.png",
   },
   {
     name: "Construction Tools",
     description: "Professional-grade power tools, hand tools, and industrial equipment.",
     tagline: "Contractor Grade Precision",
     icon: "🛠️",
+    image: "/product_tools.png",
   },
   {
     name: "Flush Door Products",
     description: "Architectural aluminium profiles, edge bands, and door panel accessories.",
     tagline: "Minimal Profiles",
     icon: "🚪",
+    image: "/product_doors.png",
   },
 ];
 
@@ -179,6 +187,10 @@ export default function Products() {
   
   const [selectedCategoryName, setSelectedCategoryName] = useState(null);
   const [checkedProducts, setCheckedProducts] = useState({});
+
+  const selectedCategory = useMemo(() => {
+    return CATEGORIES.find((cat) => cat.name === selectedCategoryName);
+  }, [selectedCategoryName]);
 
   const { filteredCategories, isAiSearch } = useMemo(() => {
     let list = CATEGORIES;
@@ -362,38 +374,54 @@ export default function Products() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
                   onClick={() => handleCardClick(cat.name)}
-                  className="steel-embossed hover:border-accent-gold/45 p-6 rounded-2xl flex flex-col justify-between aspect-[5/4] sm:aspect-square relative overflow-hidden group cursor-pointer transition-all duration-300 clickable select-none"
+                  className="steel-embossed hover:border-accent-gold/45 rounded-2xl flex flex-col relative overflow-hidden group cursor-pointer transition-all duration-300 h-full min-h-[380px] sm:min-h-[420px] clickable select-none bg-white border border-black/5 shadow-sm hover:shadow-lg"
                 >
-                  {/* Micro Border Glow */}
-                  <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/10 rounded-2xl transition-all duration-300" />
-                  
-                  {/* Rivets at corners */}
-                  <span className="rivet absolute top-1.5 left-1.5" />
-                  <span className="rivet absolute top-1.5 right-1.5" />
-                  <span className="rivet absolute bottom-1.5 left-1.5" />
-                  <span className="rivet absolute bottom-1.5 right-1.5" />
-
-                  {/* Icon and tag */}
-                  <div className="flex justify-between items-start">
-                    <span className="text-3xl filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                  {/* Category Image Header */}
+                  <div className="relative w-full h-40 sm:h-44 overflow-hidden bg-bg-main border-b border-black/5">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-80" />
+                    
+                    {/* Floating Icon badge */}
+                    <span className="absolute bottom-3 left-4 text-2xl filter drop-shadow-md bg-white/90 backdrop-blur-sm w-10 h-10 rounded-full flex items-center justify-center border border-black/5 shadow-sm">
                       {cat.icon}
-                    </span>
-                    <span className="text-[9px] uppercase tracking-widest text-accent-gold font-mono font-bold border border-accent-gold/20 px-2.5 py-1 bg-accent-gold/5 rounded">
-                      Inspect
                     </span>
                   </div>
 
+                  {/* Micro Border Glow */}
+                  <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/10 rounded-2xl transition-all duration-300 pointer-events-none" />
+                  
+                  {/* Rivets at corners */}
+                  <span className="rivet absolute top-1.5 left-1.5 z-10" />
+                  <span className="rivet absolute top-1.5 right-1.5 z-10" />
+                  <span className="rivet absolute bottom-1.5 left-1.5 z-10" />
+                  <span className="rivet absolute bottom-1.5 right-1.5 z-10" />
+
                   {/* Content details */}
-                  <div className="mt-6">
-                    <h3 className="text-lg md:text-xl font-bold font-heading text-text-main tracking-tight group-hover:text-accent-gold transition-colors duration-300">
-                      {cat.name}
-                    </h3>
-                    <p className="text-[9px] tracking-widest text-text-muted uppercase font-mono font-bold mt-1">
-                      {cat.tagline}
-                    </p>
-                    <p className="text-xs text-text-muted font-light leading-relaxed mt-3 line-clamp-3 font-body">
-                      {cat.description}
-                    </p>
+                  <div className="p-5 flex flex-col justify-between flex-1">
+                    <div>
+                      <span className="text-[9px] tracking-[0.15em] text-accent-gold uppercase font-mono font-bold block mb-1">
+                        {cat.tagline}
+                      </span>
+                      <h3 className="text-base sm:text-lg font-bold font-heading text-text-main tracking-tight group-hover:text-accent-gold transition-colors duration-300 leading-snug">
+                        {cat.name}
+                      </h3>
+                      <p className="text-xs text-text-muted font-light leading-relaxed mt-2 line-clamp-3 font-body">
+                        {cat.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-black/5 flex justify-between items-center">
+                      <span className="text-[9px] uppercase tracking-widest text-accent-gold font-mono font-bold">
+                        Browse Range
+                      </span>
+                      <span className="text-xs text-text-muted group-hover:text-accent-gold font-bold transition-colors">
+                        ➔
+                      </span>
+                    </div>
                   </div>
                 </motion.div>
               </ParallaxCard>
@@ -447,28 +475,39 @@ export default function Products() {
               className="relative steel-embossed w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh] border border-black/5"
             >
               {/* Rivets Decoration inside Modal */}
-              <span className="rivet absolute top-2 left-2" />
-              <span className="rivet absolute top-2 right-2" />
-              <span className="rivet absolute bottom-2 left-2" />
-              <span className="rivet absolute bottom-2 right-2" />
+              <span className="rivet absolute top-2 left-2 z-20" />
+              <span className="rivet absolute top-2 right-2 z-20" />
+              <span className="rivet absolute bottom-2 left-2 z-20" />
+              <span className="rivet absolute bottom-2 right-2 z-20" />
 
-              {/* Header */}
-              <div className="p-6 border-b border-black/5 flex justify-between items-start bg-black/5">
-                <div className="pr-4">
-                  <span className="text-[9px] tracking-widest text-accent-gold uppercase font-mono font-bold">
-                    ESTIMATION SPEC SHEET
-                  </span>
-                  <h3 className="text-xl md:text-2xl font-bold font-heading text-text-main tracking-tight mt-1">
-                    {selectedCategoryName}
-                  </h3>
+              {/* Header Banner */}
+              {selectedCategory && (
+                <div className="relative w-full h-32 overflow-hidden border-b border-black/5 bg-bg-main shrink-0">
+                  <img
+                    src={selectedCategory.image}
+                    alt={selectedCategory.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/30" />
+                  
+                  {/* Floating close button */}
+                  <button
+                    onClick={() => setSelectedCategoryName(null)}
+                    className="absolute top-4 right-4 p-1.5 rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors clickable z-20"
+                  >
+                    <X size={18} />
+                  </button>
+
+                  <div className="absolute bottom-4 left-6 pr-12 z-10 text-white">
+                    <span className="text-[8px] tracking-[0.2em] text-accent-gold uppercase font-mono font-bold block mb-0.5">
+                      {selectedCategory.tagline}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-bold font-heading tracking-tight leading-tight">
+                      {selectedCategory.name}
+                    </h3>
+                  </div>
                 </div>
-                <button
-                  onClick={() => setSelectedCategoryName(null)}
-                  className="p-1.5 rounded-full text-text-muted hover:text-text-main hover:bg-black/5 transition-colors clickable"
-                >
-                  <X size={18} />
-                </button>
-              </div>
+              )}
 
               {/* Body: Selectable Products Checklist */}
               <div className="p-6 overflow-y-auto flex-1 space-y-4 custom-scrollbar">
@@ -483,19 +522,29 @@ export default function Products() {
                       <div
                         key={p.id}
                         onClick={() => handleCheckboxChange(p.id)}
-                        className={`flex items-center justify-between p-4 rounded-xl border cursor-pointer select-none transition-all duration-300 ${
+                        className={`flex items-center justify-between p-3.5 rounded-xl border cursor-pointer select-none transition-all duration-300 ${
                           isChecked
-                            ? "bg-accent-gold/10 border-accent-gold"
+                            ? "bg-accent-gold/10 border-accent-gold shadow-sm"
                             : "bg-white border-black/5 hover:border-black/10"
                         }`}
                       >
-                        <div className="pr-2">
-                          <p className="text-sm font-heading font-semibold text-text-main">
-                            {p.name}
-                          </p>
-                          <p className="text-[9px] tracking-widest text-text-muted uppercase mt-1 font-mono">
-                            Brand Spec: {p.brand}
-                          </p>
+                        <div className="flex items-center gap-3 pr-2">
+                          {/* Product Thumbnail */}
+                          <div className="w-12 h-12 rounded-lg overflow-hidden border border-black/5 bg-bg-main shrink-0 relative">
+                            <img
+                              src={selectedCategory?.image}
+                              alt={p.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div>
+                            <p className="text-xs sm:text-sm font-heading font-semibold text-text-main leading-snug">
+                              {p.name}
+                            </p>
+                            <p className="text-[9px] tracking-widest text-text-muted uppercase mt-0.5 font-mono">
+                              Brand Spec: {p.brand}
+                            </p>
+                          </div>
                         </div>
                         <div
                           className={`w-5 h-5 rounded flex items-center justify-center border transition-all shrink-0 ${
@@ -513,7 +562,7 @@ export default function Products() {
               </div>
 
               {/* Footer Actions */}
-              <div className="p-6 border-t border-black/5 flex flex-col gap-3 bg-black/5">
+              <div className="p-6 border-t border-black/5 flex flex-col gap-3 bg-black/5 shrink-0">
                 <button
                   onClick={sendWhatsAppEnquiry}
                   className="w-full flex items-center justify-center gap-2 py-3.5 bg-accent-gold hover:bg-accent-gold/90 text-white rounded-lg font-mono font-bold uppercase tracking-widest transition-all duration-300 shadow-md clickable"

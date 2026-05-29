@@ -49,9 +49,6 @@ export default function Brands() {
     brand31, brand32, brand33, brand34, brand35, brand36
   ], []);
 
-  // Duplicate list to ensure smooth infinite loop scroll
-  const scrollBrands = useMemo(() => [...brandImages, ...brandImages, ...brandImages], [brandImages]);
-
   return (
     <section id="brands" className="py-24 bg-bg-main overflow-hidden relative border-y border-black/5">
       {/* Background blueprint details */}
@@ -62,24 +59,23 @@ export default function Brands() {
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 my-12 text-center relative z-10">
         <span className="text-xs uppercase tracking-[0.25em] font-mono font-bold text-accent-gold mb-3 block">
-          Authorized Sourcing
+          Authorized Sourcing Directory
         </span>
         <h2 className="text-3xl sm:text-4xl font-bold font-heading tracking-tight text-text-main">
-          30+ Premium Hardware Brands <span className="text-accent-gold">Under One Roof</span>
+          30+ Premium Hardware Brands <span className="text-accent-gold">Direct Partner Sourcing</span>
         </h2>
-        <p className="text-text-muted mt-4 max-w-xl mx-auto font-light text-sm md:text-base leading-relaxed font-body">
-          We deal directly with manufacturers to guarantee genuine products, complete catalog access, and full warranty coverage.
+        <p className="text-text-muted mt-4 max-w-2xl mx-auto font-light text-sm md:text-base leading-relaxed font-body">
+          We source directly from leading architectural brands to guarantee 100% genuine products, full warranties, and bulk order discounts for your projects.
         </p>
       </div>
 
-      {/* Infinite Scrolling Container */}
-      <div className="relative flex flex-col gap-8 select-none pointer-events-auto z-10 py-4">
-        {/* Row 1 - Forward Scroll */}
-        <div className="flex w-max gap-8 animate-marquee hover:[animation-play-state:paused]">
-          {scrollBrands.slice(0, 54).map((brand, idx) => (
+      {/* Grid of Authorized Brands (Visible Openly) */}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10 py-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          {brandImages.map((brand, idx) => (
             <div
-              key={`f-${idx}`}
-              className="flex items-center justify-center px-8 py-5 steel-embossed hover:border-accent-gold/45 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden"
+              key={idx}
+              className="flex items-center justify-center p-6 bg-white steel-embossed hover:border-accent-gold/50 rounded-xl transition-all duration-300 group min-h-[100px] relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 clickable"
             >
               {/* corner rivets for tactile detail */}
               <span className="rivet absolute top-1.5 left-1.5" />
@@ -90,32 +86,8 @@ export default function Brands() {
               <div className="transform group-hover:scale-105 transition-transform duration-300 flex items-center justify-center w-full h-full">
                 <Image
                   src={brand}
-                  alt="Swastik Hardware Partner Logo"
-                  className="max-h-[50px] w-auto max-w-[130px] object-contain filter brightness-0 opacity-40 group-hover:opacity-100 group-hover:filter-none transition-all duration-500"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Row 2 - Reverse Scroll */}
-        <div className="flex w-max gap-8 animate-marquee-reverse hover:[animation-play-state:paused]">
-          {scrollBrands.slice(54).map((brand, idx) => (
-            <div
-              key={`r-${idx}`}
-              className="flex items-center justify-center px-8 py-5 steel-embossed hover:border-accent-gold/45 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden"
-            >
-              {/* corner rivets for tactile detail */}
-              <span className="rivet absolute top-1.5 left-1.5" />
-              <span className="rivet absolute top-1.5 right-1.5" />
-              <span className="rivet absolute bottom-1.5 left-1.5" />
-              <span className="rivet absolute bottom-1.5 right-1.5" />
-
-              <div className="transform group-hover:scale-105 transition-transform duration-300 flex items-center justify-center w-full h-full">
-                <Image
-                  src={brand}
-                  alt="Swastik Hardware Partner Logo"
-                  className="max-h-[50px] w-auto max-w-[130px] object-contain filter brightness-0 opacity-40 group-hover:opacity-100 group-hover:filter-none transition-all duration-500"
+                  alt={`Swastik Hardware Brand Partner ${idx + 1}`}
+                  className="max-h-[50px] w-auto max-w-full object-contain opacity-95 group-hover:opacity-100 transition-all duration-300"
                 />
               </div>
             </div>
@@ -125,10 +97,6 @@ export default function Brands() {
 
       {/* Decorative Bottom Safety Stripes */}
       <div className="h-1.5 w-full safety-stripes opacity-80 mt-12 relative z-10" />
-
-      {/* Fade Overlays on sides for cinematic transition */}
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-bg-main to-transparent z-20 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-bg-main to-transparent z-20 pointer-events-none" />
     </section>
   );
 }

@@ -38,7 +38,7 @@ export default function Contact() {
   };
 
   const openGoogleMaps = () => {
-    window.open("https://maps.google.com/?q=20,+Muthusamy+Street,+Sathy+Road,+Erode+-+638001", "_blank");
+    window.open("https://maps.app.goo.gl/szDeFRGJP1KmM8NA6?g_st=ipc", "_blank");
   };
 
   return (

@@ -105,7 +105,7 @@ export default function Navbar() {
                   className={`text-xs tracking-wider uppercase transition-all duration-300 relative py-1 font-mono font-bold clickable ${
                     activeSection === item.href.substring(1)
                       ? "text-accent-gold"
-                      : "text-text-muted hover:text-text-main"
+                      : "text-neutral-900 hover:text-accent-gold"
                   }`}
                 >
                   {item.name}
@@ -160,10 +160,10 @@ export default function Navbar() {
               <a
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`text-base tracking-widest uppercase font-mono font-bold block py-2 border-b border-black/5 clickable ${
+                className={`text-base tracking-widest uppercase font-mono font-bold block py-2 border-b border-black/5 transition-colors duration-300 clickable ${
                   activeSection === item.href.substring(1)
                     ? "text-accent-gold"
-                    : "text-text-muted"
+                    : "text-neutral-900 hover:text-accent-gold"
                 }`}
               >
                 {item.name}

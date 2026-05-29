@@ -55,7 +55,7 @@ export default function Footer() {
     },
     {
       name: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/swastik_and_company?igsh=dnV3eWF1NmowcjJt&utm_source=qr",
       svg: (
         <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
