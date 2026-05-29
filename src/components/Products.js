@@ -256,7 +256,7 @@ export default function Products() {
   };
 
   return (
-    <section id="products" className="py-24 bg-bg-main relative overflow-hidden border-b border-white/5">
+    <section id="products" className="py-24 bg-bg-main relative overflow-hidden border-b border-black/5">
       {/* Background blueprint details */}
       <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
 
@@ -294,13 +294,13 @@ export default function Products() {
               placeholder="AI search e.g., smart locks, adhesives, tandem drawer..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-black/40 text-text-main border border-white/5 focus:border-accent-gold/50 rounded-lg py-3.5 pl-11 pr-24 outline-none text-xs md:text-sm tracking-wide font-mono transition-colors"
+              className="w-full bg-white text-text-main border border-black/10 focus:border-accent-gold/50 rounded-lg py-3.5 pl-11 pr-24 outline-none text-xs md:text-sm tracking-wide font-mono transition-colors"
             />
             <Search className="absolute left-4 text-text-muted" size={16} />
             
             {/* AI Status Badge */}
             {searchQuery && (
-              <div className="absolute right-3 flex items-center gap-1 bg-accent-gold/15 border border-accent-gold/30 px-2.5 py-1 rounded-full text-[9px] text-accent-gold font-mono font-bold">
+              <div className="absolute right-3 flex items-center gap-1 bg-accent-gold/10 border border-accent-gold/30 px-2.5 py-1 rounded-full text-[9px] text-accent-gold font-mono font-bold">
                 {isAiSearch ? (
                   <>
                     <Sparkles size={10} className="animate-spin text-accent-gold" />
@@ -322,8 +322,8 @@ export default function Products() {
               }}
               className={`px-4 py-2.5 text-[10px] uppercase tracking-widest font-mono font-bold rounded border transition-all duration-300 ${
                 activeCategory === "All"
-                  ? "bg-accent-gold border-accent-gold text-bg-main shadow-[0_0_12px_rgba(255,107,0,0.3)]"
-                  : "border-white/10 text-text-muted hover:text-text-main hover:border-white/20"
+                  ? "bg-accent-gold border-accent-gold text-white shadow-md"
+                  : "border-black/10 text-text-muted hover:text-text-main hover:border-black/20"
               }`}
             >
               All Items
@@ -337,8 +337,8 @@ export default function Products() {
                 }}
                 className={`px-4 py-2.5 text-[10px] uppercase tracking-widest font-mono font-bold rounded border transition-all duration-300 ${
                   activeCategory === cat.name
-                    ? "bg-accent-gold border-accent-gold text-bg-main shadow-[0_0_12px_rgba(255,107,0,0.3)]"
-                    : "border-white/10 text-text-muted hover:text-text-main hover:border-white/20"
+                    ? "bg-accent-gold border-accent-gold text-white shadow-md"
+                    : "border-black/10 text-text-muted hover:text-text-main hover:border-black/20"
                 }`}
               >
                 {cat.name.replace(" & Waterproofing", "").replace(" Fittings", "").replace(" & Tower Bolts", "")}
@@ -362,7 +362,7 @@ export default function Products() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
                   onClick={() => handleCardClick(cat.name)}
-                  className="steel-embossed hover:border-accent-gold/40 p-6 rounded-2xl flex flex-col justify-between aspect-[5/4] sm:aspect-square relative overflow-hidden group cursor-pointer transition-all duration-300 clickable select-none"
+                  className="steel-embossed hover:border-accent-gold/45 p-6 rounded-2xl flex flex-col justify-between aspect-[5/4] sm:aspect-square relative overflow-hidden group cursor-pointer transition-all duration-300 clickable select-none"
                 >
                   {/* Micro Border Glow */}
                   <div className="absolute inset-0 border border-transparent group-hover:border-accent-gold/10 rounded-2xl transition-all duration-300" />
@@ -375,10 +375,10 @@ export default function Products() {
 
                   {/* Icon and tag */}
                   <div className="flex justify-between items-start">
-                    <span className="text-3xl filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                    <span className="text-3xl filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
                       {cat.icon}
                     </span>
-                    <span className="text-[9px] uppercase tracking-widest text-accent-gold font-mono font-bold border border-accent-gold/20 px-2.5 py-1 bg-black/20 rounded">
+                    <span className="text-[9px] uppercase tracking-widest text-accent-gold font-mono font-bold border border-accent-gold/20 px-2.5 py-1 bg-accent-gold/5 rounded">
                       Inspect
                     </span>
                   </div>
@@ -417,7 +417,7 @@ export default function Products() {
                 setSearchQuery("");
                 setActiveCategory("All");
               }}
-              className="mt-4 text-[10px] uppercase tracking-widest text-accent-gold hover:text-white font-mono font-bold transition-colors"
+              className="mt-4 text-[10px] uppercase tracking-widest text-accent-gold hover:text-text-main font-mono font-bold transition-colors"
             >
               Clear Filters & Search
             </button>
@@ -436,7 +436,7 @@ export default function Products() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedCategoryName(null)}
-              className="absolute inset-0 bg-black/75 backdrop-blur-md"
+              className="absolute inset-0 bg-black/40 backdrop-blur-md"
             />
 
             {/* Modal Box (Tactile Steel Plate) */}
@@ -444,7 +444,7 @@ export default function Products() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative steel-embossed w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh] border border-white/10"
+              className="relative steel-embossed w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh] border border-black/5"
             >
               {/* Rivets Decoration inside Modal */}
               <span className="rivet absolute top-2 left-2" />
@@ -453,7 +453,7 @@ export default function Products() {
               <span className="rivet absolute bottom-2 right-2" />
 
               {/* Header */}
-              <div className="p-6 border-b border-white/5 flex justify-between items-start bg-black/20">
+              <div className="p-6 border-b border-black/5 flex justify-between items-start bg-black/5">
                 <div className="pr-4">
                   <span className="text-[9px] tracking-widest text-accent-gold uppercase font-mono font-bold">
                     ESTIMATION SPEC SHEET
@@ -464,7 +464,7 @@ export default function Products() {
                 </div>
                 <button
                   onClick={() => setSelectedCategoryName(null)}
-                  className="p-1.5 rounded-full text-text-muted hover:text-white hover:bg-white/5 transition-colors clickable"
+                  className="p-1.5 rounded-full text-text-muted hover:text-text-main hover:bg-black/5 transition-colors clickable"
                 >
                   <X size={18} />
                 </button>
@@ -486,7 +486,7 @@ export default function Products() {
                         className={`flex items-center justify-between p-4 rounded-xl border cursor-pointer select-none transition-all duration-300 ${
                           isChecked
                             ? "bg-accent-gold/10 border-accent-gold"
-                            : "bg-black/20 border-white/5 hover:border-white/15"
+                            : "bg-white border-black/5 hover:border-black/10"
                         }`}
                       >
                         <div className="pr-2">
@@ -500,11 +500,11 @@ export default function Products() {
                         <div
                           className={`w-5 h-5 rounded flex items-center justify-center border transition-all shrink-0 ${
                             isChecked
-                              ? "bg-accent-gold border-accent-gold text-bg-main"
-                              : "border-white/20 bg-transparent"
+                              ? "bg-accent-gold border-accent-gold text-white"
+                              : "border-black/10 bg-transparent"
                           }`}
                         >
-                          {isChecked && <Check size={12} strokeWidth={3} className="text-bg-main" />}
+                          {isChecked && <Check size={12} strokeWidth={3} className="text-white" />}
                         </div>
                       </div>
                     );
@@ -513,17 +513,17 @@ export default function Products() {
               </div>
 
               {/* Footer Actions */}
-              <div className="p-6 border-t border-white/5 flex flex-col gap-3 bg-black/20">
+              <div className="p-6 border-t border-black/5 flex flex-col gap-3 bg-black/5">
                 <button
                   onClick={sendWhatsAppEnquiry}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 bg-accent-gold hover:bg-accent-gold/90 text-bg-main rounded-lg font-mono font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(255,107,0,0.3)] clickable"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 bg-accent-gold hover:bg-accent-gold/90 text-white rounded-lg font-mono font-bold uppercase tracking-widest transition-all duration-300 shadow-md clickable"
                 >
-                  <MessageSquare size={14} className="text-bg-main" />
+                  <MessageSquare size={14} className="text-white" />
                   <span>Send Enquiry Sheet</span>
                 </button>
                 <button
                   onClick={() => setSelectedCategoryName(null)}
-                  className="w-full py-2.5 text-[10px] font-mono font-bold uppercase tracking-widest text-text-muted hover:text-white transition-colors clickable"
+                  className="w-full py-2.5 text-[10px] font-mono font-bold uppercase tracking-widest text-text-muted hover:text-text-main transition-colors clickable"
                 >
                   Dismiss
                 </button>

@@ -46,7 +46,7 @@ export default function BeforeAfter() {
   }, []);
 
   return (
-    <section className="py-24 bg-bg-main relative overflow-hidden border-b border-white/5">
+    <section className="py-24 bg-bg-main relative overflow-hidden border-b border-black/5">
       {/* Background blueprint details */}
       <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
       <div className="absolute bottom-0 right-10 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
@@ -76,7 +76,7 @@ export default function BeforeAfter() {
             onTouchStart={handleStart}
             onMouseUp={handleEnd}
             onTouchEnd={handleEnd}
-            className="relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden steel-embossed shadow-2xl cursor-ew-resize select-none border border-white/10"
+            className="relative w-full max-w-4xl aspect-[16/9] rounded-2xl overflow-hidden steel-embossed shadow-xl cursor-ew-resize select-none border border-black/5"
           >
             {/* corner rivets */}
             <span className="rivet absolute top-2 left-2 z-40" />
@@ -86,12 +86,13 @@ export default function BeforeAfter() {
 
             {/* 1. BEFORE LAYER: Grayscale Version */}
             <div className="absolute inset-0 z-10 pointer-events-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/gallery_kitchen.png"
                 alt="Before Installation"
                 className="w-full h-full object-cover filter grayscale contrast-125 brightness-75 select-none"
               />
-              <span className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded text-[10px] font-mono font-bold uppercase tracking-widest text-text-muted">
+              <span className="absolute top-4 left-4 bg-black/85 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded text-[10px] font-mono font-bold uppercase tracking-widest text-text-muted">
                 Unfinished Space
               </span>
             </div>
@@ -103,25 +104,26 @@ export default function BeforeAfter() {
                 clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)`,
               }}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/gallery_kitchen.png"
                 alt="After Installation"
                 className="w-full h-full object-cover select-none"
               />
-              <span className="absolute top-4 right-4 bg-accent-gold text-bg-main px-3 py-1.5 rounded text-[10px] font-mono font-bold uppercase tracking-widest shadow-md">
+              <span className="absolute top-4 right-4 bg-accent-gold text-white px-3 py-1.5 rounded text-[10px] font-mono font-bold uppercase tracking-widest shadow-md">
                 Swastik Premium Fit
               </span>
             </div>
 
             {/* 3. SLIDER LINE & HANDLE */}
             <div
-              className="absolute top-0 bottom-0 z-30 w-1 bg-accent-gold hover:bg-accent-gold/90 transition-colors duration-75 ease-out"
+              className="absolute top-0 bottom-0 z-30 w-[2px] bg-accent-gold hover:bg-accent-gold/90 transition-colors duration-75 ease-out"
               style={{ left: `${sliderPosition}%` }}
             >
               {/* Slider Handle Button (Steel rivet styled plate with warning stripes) */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#22252A] border-2 border-accent-gold flex items-center justify-center shadow-[0_0_15px_rgba(255,107,0,0.4)] cursor-ew-resize">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-2 border-accent-gold flex items-center justify-center shadow-lg cursor-ew-resize">
                 {/* Warning stripes inside the handle for industrial feel */}
-                <div className="w-8 h-8 rounded-full overflow-hidden relative flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full overflow-hidden relative flex items-center justify-center bg-bg-main">
                   <div className="absolute inset-0 safety-stripes opacity-20" />
                   <div className="flex gap-1.5 justify-center items-center z-10">
                     <span className="w-1 h-3.5 bg-accent-gold rounded-full" />

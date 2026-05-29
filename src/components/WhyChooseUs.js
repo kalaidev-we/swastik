@@ -84,7 +84,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-24 bg-bg-main relative overflow-hidden border-b border-white/5">
+    <section className="py-24 bg-bg-main relative overflow-hidden border-b border-black/5">
       {/* Background blueprint sheet & gradients */}
       <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-accent-gold/5 blur-[120px] rounded-full pointer-events-none" />
@@ -151,7 +151,7 @@ export default function WhyChooseUs() {
                 <span className="rivet absolute bottom-1.5 right-1.5" />
 
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-black/30 border border-white/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 group-hover:border-accent-gold/20 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-black/5 border border-black/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 group-hover:border-accent-gold/20 transition-all duration-300">
                     <Icon className="text-accent-gold group-hover:scale-105 transition-transform" size={18} />
                   </div>
                   <h3 className="text-lg font-heading font-bold text-text-main group-hover:text-accent-gold transition-colors duration-300">

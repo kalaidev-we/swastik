@@ -3,12 +3,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-main: #17181C;
-  --color-bg-card: #22252A;
-  --color-text-main: #F5F5F7;
-  --color-text-muted: #92969D;
-  --color-accent-gold: #FF6B00;
-  --color-accent-amber: #FFA500;
+  --color-bg-main: #F5F5F7;
+  --color-bg-card: #FFFFFF;
+  --color-text-main: #1D1D1F;
+  --color-text-muted: #86868B;
+  --color-accent-gold: #C5A880;
+  --color-accent-amber: #E2B565;
   
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -39,118 +39,118 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #17181C;
+  background: #F5F5F7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2D3139;
+  background: #D1D5DB;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF6B00;
+  background: #C5A880;
 }
 
 /* Custom Selection */
 ::selection {
-  background: #FF6B00;
-  color: #17181C;
+  background: #C5A880;
+  color: #FFFFFF;
 }
 
 /* Core Document Styles */
 html {
   scroll-behavior: smooth;
-  background-color: #17181C;
-  color: #F5F5F7;
+  background-color: #F5F5F7;
+  color: #1D1D1F;
   overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: #17181C;
-  color: #F5F5F7;
+  background-color: #F5F5F7;
+  color: #1D1D1F;
 }
 
-/* Heavy-Duty Industrial Utilities */
+/* Heavy-Duty Industrial Utilities (Light Theme Conversion) */
 .glass-panel {
-  background: rgba(34, 37, 42, 0.85);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 .glass-panel-glow {
-  background: rgba(34, 37, 42, 0.9);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 107, 0, 0.35);
-  box-shadow: 0 0 35px rgba(255, 107, 0, 0.12);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  box-shadow: 0 0 35px rgba(197, 168, 128, 0.12);
 }
 
 .steel-plate {
-  background: #22252A;
-  border: 1px solid #2F333B;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 10px rgba(0, 0, 0, 0.3);
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 10px rgba(0, 0, 0, 0.02);
 }
 
-/* Premium Beveled Brushed Steel Plate */
+/* Premium Beveled Brushed Aluminum/Chrome Plate */
 .steel-embossed {
-  background: linear-gradient(145deg, #282B30 0%, #1A1C20 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  border-right: 1px solid rgba(0, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background: linear-gradient(145deg, #FFFFFF 0%, #F5F5F7 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.95);
+  border-left: 1px solid rgba(255, 255, 255, 0.95);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 
-    inset 1px 1px 2px rgba(255, 255, 255, 0.05),
-    inset -1px -1px 2px rgba(0, 0, 0, 0.5),
-    0 10px 25px rgba(0, 0, 0, 0.45);
+    inset 1px 1px 2px rgba(255, 255, 255, 0.9),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.03),
+    0 10px 25px rgba(0, 0, 0, 0.04);
 }
 
-/* Industrial Rivet Component (Specular metallic highlights) */
+/* Polished Chrome Rivet Component */
 .rivet {
   width: 8px;
   height: 8px;
-  background: radial-gradient(circle at 35% 35%, #8E9196 0%, #4A4D53 50%, #202225 100%);
+  background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #D1D5DB 60%, #9CA3AF 100%);
   border-radius: 50%;
   box-shadow: 
-    inset 1px 1px 1px rgba(255, 255, 255, 0.45),
-    1px 1px 2px rgba(0, 0, 0, 0.85);
+    inset 1px 1px 1px rgba(255, 255, 255, 0.8),
+    1px 1px 2px rgba(0, 0, 0, 0.12);
   display: inline-block;
 }
 
-/* High-contrast Neon-Orange/Charcoal Safety warning stripes */
+/* Subtle Champagne Gold/Off-White Warning stripes */
 .safety-stripes {
   background: repeating-linear-gradient(
     -45deg,
-    #FF6B00 0px,
-    #FF6B00 12px,
-    #17181C 12px,
-    #17181C 24px
+    #C5A880 0px,
+    #C5A880 12px,
+    #F5F5F7 12px,
+    #F5F5F7 24px
   );
 }
 
 /* Blueprint drawing-sheet gridlines background */
 .blueprint-sheet {
-  background-color: #17181C;
+  background-color: #F5F5F7;
   background-image: 
-    linear-gradient(rgba(255, 107, 0, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 107, 0, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(197, 168, 128, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 168, 128, 0.04) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #F5F5F7 0%, #FF6B00 65%, #FFA500 100%);
+  background: linear-gradient(135deg, #1D1D1F 0%, #C5A880 65%, #E2B565 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .dark-gradient-bg {
-  background: linear-gradient(135deg, #17181C 0%, #22252A 100%);
+  background: linear-gradient(135deg, #F5F5F7 0%, #FFFFFF 100%);
 }
 
 .spotlight-glow {
-  background: radial-gradient(600px circle at var(--x) var(--y), rgba(255, 107, 0, 0.06), transparent 40%);
+  background: radial-gradient(600px circle at var(--x) var(--y), rgba(197, 168, 128, 0.03), transparent 40%);
 }
 
 /* Technical Details Label */
@@ -162,7 +162,7 @@ body {
 }
 
 .blueprint-border {
-  border: 1px dashed rgba(255, 107, 0, 0.2);
+  border: 1px dashed rgba(197, 168, 128, 0.3);
 }
 
 /* Custom Hide Scrollbar */

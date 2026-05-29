@@ -85,7 +85,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-bg-main relative pt-20 pb-8 border-t border-white/5 overflow-hidden">
+    <footer className="bg-bg-main relative pt-20 pb-8 border-t border-black/5 overflow-hidden">
       {/* Background blueprint details */}
       <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
 
@@ -96,14 +96,22 @@ export default function Footer() {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "home")}
-            className="flex flex-col group clickable"
+            className="flex items-center gap-3 group clickable"
           >
-            <span className="text-2xl font-bold font-heading tracking-widest text-text-main group-hover:text-accent-gold transition-colors duration-300">
-              SWASTIK
-            </span>
-            <span className="text-[11px] tracking-[0.25em] text-accent-gold font-mono -mt-1 font-bold">
-              & COMPANY
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="Swastik & Company Logo"
+              className="h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+            />
+            <div className="flex flex-col">
+              <span className="text-2xl font-bold font-heading tracking-widest text-text-main group-hover:text-accent-gold transition-colors duration-300">
+                SWASTIK
+              </span>
+              <span className="text-[11px] tracking-[0.25em] text-accent-gold font-mono -mt-1 font-bold">
+                & COMPANY
+              </span>
+            </div>
           </a>
           <p className="text-xs text-text-muted leading-relaxed max-w-sm mt-2 font-light font-body">
             Erode&apos;s premier destination for high-end architectural hardware, modular drawer channels, security locks, and specialized wood adhesives. Elevating residential and commercial projects since 1991.
@@ -121,7 +129,7 @@ export default function Footer() {
                   className="w-9 h-9 rounded-full steel-embossed hover:border-accent-gold/40 text-text-muted hover:text-accent-gold flex items-center justify-center transition-all duration-300 clickable relative"
                   title={social.name}
                 >
-                  <span className="rivet absolute top-0.5 left-0.5" className="scale-50 opacity-40" />
+                  <span className="rivet absolute top-0.5 left-0.5 scale-50 opacity-40" />
                   {social.svg}
                 </a>
               );
@@ -201,18 +209,18 @@ export default function Footer() {
               value={downloadInput}
               onChange={(e) => setDownloadInput(e.target.value)}
               required
-              className="w-full bg-black/35 border border-white/5 focus:border-accent-gold/50 rounded-lg py-3.5 pl-4 pr-16 outline-none text-xs text-text-main tracking-wider font-body transition-colors"
+              className="w-full bg-white border border-black/10 focus:border-accent-gold/50 rounded-lg py-3.5 pl-4 pr-16 outline-none text-xs text-text-main tracking-wider font-body transition-colors"
             />
             <button
               type="submit"
               disabled={downloadState === "loading"}
-              className="absolute right-1 w-10 h-10 rounded-md bg-accent-gold hover:bg-accent-gold/90 text-bg-main font-heading font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center clickable disabled:opacity-50"
+              className="absolute right-1 w-10 h-10 rounded-md bg-accent-gold hover:bg-accent-gold/90 text-white font-heading font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center clickable disabled:opacity-50"
               aria-label="Download Catalogue"
             >
               {downloadState === "loading" ? (
-                <span className="w-4 h-4 border-2 border-bg-main border-t-transparent rounded-full animate-spin" />
+                <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
-                <Download size={14} className="text-bg-main" />
+                <Download size={14} className="text-white" />
               )}
             </button>
           </form>
@@ -226,9 +234,9 @@ export default function Footer() {
       </div>
 
       {/* Copyright & Scroll Top Row */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left relative z-10">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 pt-8 border-t border-black/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left relative z-10">
         <p className="text-[10px] text-text-muted font-mono tracking-wider">
-          © 2026 Swastik Trading Company. All Rights Reserved. | Designed with Raw Industrial Modern theme.
+          © 2026 Swastik Trading Company. All Rights Reserved. | Designed with Raw Industrial Modern (Light) theme.
         </p>
         
         <button

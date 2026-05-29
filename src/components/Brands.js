@@ -53,7 +53,7 @@ export default function Brands() {
   const scrollBrands = useMemo(() => [...brandImages, ...brandImages, ...brandImages], [brandImages]);
 
   return (
-    <section id="brands" className="py-24 bg-bg-main overflow-hidden relative border-y border-white/5">
+    <section id="brands" className="py-24 bg-bg-main overflow-hidden relative border-y border-black/5">
       {/* Background blueprint details */}
       <div className="absolute inset-0 blueprint-sheet opacity-40 pointer-events-none" />
 
@@ -79,7 +79,7 @@ export default function Brands() {
           {scrollBrands.slice(0, 54).map((brand, idx) => (
             <div
               key={`f-${idx}`}
-              className="flex items-center justify-center px-8 py-5 steel-embossed hover:border-accent-gold/40 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden"
+              className="flex items-center justify-center px-8 py-5 steel-embossed hover:border-accent-gold/45 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden"
             >
               {/* corner rivets for tactile detail */}
               <span className="rivet absolute top-1.5 left-1.5" />
@@ -91,7 +91,7 @@ export default function Brands() {
                 <Image
                   src={brand}
                   alt="Swastik Hardware Partner Logo"
-                  className="max-h-[50px] w-auto max-w-[130px] object-contain filter brightness-0 invert opacity-40 group-hover:opacity-100 group-hover:filter-none transition-all duration-500"
+                  className="max-h-[50px] w-auto max-w-[130px] object-contain filter brightness-0 opacity-40 group-hover:opacity-100 group-hover:filter-none transition-all duration-500"
                 />
               </div>
             </div>
@@ -103,7 +103,7 @@ export default function Brands() {
           {scrollBrands.slice(54).map((brand, idx) => (
             <div
               key={`r-${idx}`}
-              className="flex items-center justify-center px-8 py-5 steel-embossed hover:border-accent-gold/40 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden"
+              className="flex items-center justify-center px-8 py-5 steel-embossed hover:border-accent-gold/45 rounded-xl transition-all duration-300 group min-w-[180px] h-[90px] relative overflow-hidden"
             >
               {/* corner rivets for tactile detail */}
               <span className="rivet absolute top-1.5 left-1.5" />
@@ -115,7 +115,7 @@ export default function Brands() {
                 <Image
                   src={brand}
                   alt="Swastik Hardware Partner Logo"
-                  className="max-h-[50px] w-auto max-w-[130px] object-contain filter brightness-0 invert opacity-40 group-hover:opacity-100 group-hover:filter-none transition-all duration-500"
+                  className="max-h-[50px] w-auto max-w-[130px] object-contain filter brightness-0 opacity-40 group-hover:opacity-100 group-hover:filter-none transition-all duration-500"
                 />
               </div>
             </div>

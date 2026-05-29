@@ -14,7 +14,7 @@ export default function About() {
 
   return (
     <section id="about" className="py-24 bg-bg-main relative overflow-hidden">
-      {/* Decorative ambient lighting (very soft orange glow) */}
+      {/* Decorative ambient lighting (very soft gold glow) */}
       <div className="absolute top-1/4 left-0 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
       
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 relative z-10">
@@ -32,26 +32,32 @@ export default function About() {
             <div className="absolute -inset-4 border border-accent-gold/15 rounded-md -z-10 translate-x-2 translate-y-2 pointer-events-none" />
             
             {/* The Image Container */}
-            <div className="relative aspect-[4/5] w-full rounded-md overflow-hidden bg-bg-card border border-white/5 group shadow-2xl">
+            <div className="relative aspect-[4/5] w-full rounded-md overflow-hidden bg-bg-card border border-black/5 group shadow-xl">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-[8s] ease-out group-hover:scale-110"
                 style={{
-                  backgroundImage: "url('/about_industrial.png')",
+                  backgroundImage: "url('/about_details.png')",
                 }}
               />
               {/* Overlay shading */}
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-main via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-main via-transparent to-transparent opacity-60" />
             </div>
 
-            {/* Micro Floating Card (Brushed steel style) */}
+            {/* Micro Floating Card (Beveled aluminum style) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="absolute -right-4 -bottom-4 bg-bg-card/95 border border-white/5 p-6 rounded-2xl shadow-2xl max-w-[200px]"
+              className="absolute -right-4 -bottom-4 steel-embossed p-6 rounded-2xl shadow-xl max-w-[200px] select-none"
             >
-              <h4 className="text-accent-gold text-3xl font-bold font-mono">1991</h4>
+              {/* Corner rivets */}
+              <span className="rivet absolute top-1.5 left-1.5" />
+              <span className="rivet absolute top-1.5 right-1.5" />
+              <span className="rivet absolute bottom-1.5 left-1.5" />
+              <span className="rivet absolute bottom-1.5 right-1.5" />
+
+              <h4 className="text-accent-gold text-3xl font-bold font-mono mt-1">1991</h4>
               <p className="text-xs text-text-muted mt-1 leading-relaxed font-body">
                 Founding year in Erode, delivering trust and hardware excellence.
               </p>
@@ -67,7 +73,7 @@ export default function About() {
             className="lg:col-span-7 flex flex-col justify-center"
           >
             <span className="text-xs uppercase tracking-[0.25em] font-mono font-bold text-accent-gold mb-3">
-              // Brand Legacy
+              {"// Brand Legacy"}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight mb-6 text-text-main leading-tight">
               Decades of Trusted <br />

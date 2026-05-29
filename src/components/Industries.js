@@ -77,7 +77,7 @@ export default function Industries() {
   ];
 
   return (
-    <section id="industries" className="py-24 bg-bg-main relative overflow-hidden border-b border-white/5">
+    <section id="industries" className="py-24 bg-bg-main relative overflow-hidden border-b border-black/5">
       {/* Background blueprint details */}
       <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
       <div className="absolute top-10 left-1/3 w-80 h-80 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
@@ -103,7 +103,7 @@ export default function Industries() {
             const Icon = ind.icon;
             return (
               <ParallaxCard key={ind.name} index={idx}>
-                <div className="steel-embossed hover:border-accent-gold/40 p-6 rounded-2xl flex flex-col justify-between min-h-[220px] group transition-all duration-300 relative select-none">
+                <div className="steel-embossed hover:border-accent-gold/45 p-6 rounded-2xl flex flex-col justify-between min-h-[220px] group transition-all duration-300 relative select-none">
                   {/* corner rivets */}
                   <span className="rivet absolute top-1.5 left-1.5" />
                   <span className="rivet absolute top-1.5 right-1.5" />
@@ -111,7 +111,7 @@ export default function Industries() {
                   <span className="rivet absolute bottom-1.5 right-1.5" />
                   
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-black/30 border border-white/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 group-hover:border-accent-gold/20 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-black/5 border border-black/5 flex items-center justify-center mb-6 group-hover:bg-accent-gold/10 group-hover:border-accent-gold/20 transition-all duration-300">
                       <Icon className="text-accent-gold group-hover:scale-105 transition-transform" size={20} />
                     </div>
                     <h3 className="text-base md:text-lg font-heading font-bold text-text-main group-hover:text-accent-gold transition-colors duration-300">

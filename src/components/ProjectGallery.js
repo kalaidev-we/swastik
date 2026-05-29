@@ -96,7 +96,7 @@ export default function ProjectGallery() {
   };
 
   return (
-    <section id="projects" className="py-24 bg-bg-main relative overflow-hidden border-b border-white/5">
+    <section id="projects" className="py-24 bg-bg-main relative overflow-hidden border-b border-black/5">
       {/* Background blueprint details */}
       <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
       <div className="absolute top-10 left-10 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
@@ -124,8 +124,8 @@ export default function ProjectGallery() {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2.5 text-[10px] uppercase tracking-widest font-mono font-bold rounded border transition-all duration-300 ${
                 activeCategory === cat
-                  ? "bg-accent-gold border-accent-gold text-bg-main shadow-[0_0_12px_rgba(255,107,0,0.3)]"
-                  : "border-white/10 text-text-muted hover:text-text-main hover:border-white/20"
+                  ? "bg-accent-gold border-accent-gold text-white shadow-md"
+                  : "border-black/10 text-text-muted hover:text-text-main hover:border-black/20"
               }`}
             >
               {cat}
@@ -162,11 +162,11 @@ export default function ProjectGallery() {
                     style={{ backgroundImage: `url(${item.image})` }}
                   />
                   
-                  {/* Dark concrete-overlay shading */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-main via-bg-main/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                  {/* Light concrete-overlay shading */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-main via-bg-main/30 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300" />
                   
-                  {/* Hover zoom icon (Orange glow style) */}
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                  {/* Hover zoom icon (Gold outline style) */}
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/95 border border-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
                     <ZoomIn className="text-accent-gold" size={16} />
                   </div>
 
@@ -205,7 +205,7 @@ export default function ProjectGallery() {
               {/* Close Button */}
               <button
                 onClick={() => setLightboxIndex(null)}
-                className="absolute top-6 right-6 p-2.5 rounded-full bg-black/60 border border-white/10 hover:bg-accent-gold hover:text-bg-main text-white z-50 transition-colors clickable"
+                className="absolute top-6 right-6 p-2.5 rounded-full bg-black/60 border border-white/10 hover:bg-accent-gold hover:text-white text-white z-50 transition-colors clickable"
               >
                 <X size={20} />
               </button>
@@ -213,13 +213,13 @@ export default function ProjectGallery() {
               {/* Navigation Arrows */}
               <button
                 onClick={handlePrev}
-                className="absolute left-6 p-2.5 rounded-full bg-black/60 border border-white/10 hover:bg-accent-gold hover:text-bg-main text-white z-50 transition-colors clickable"
+                className="absolute left-6 p-2.5 rounded-full bg-black/60 border border-white/10 hover:bg-accent-gold hover:text-white text-white z-50 transition-colors clickable"
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={handleNext}
-                className="absolute right-6 p-2.5 rounded-full bg-black/60 border border-white/10 hover:bg-accent-gold hover:text-bg-main text-white z-50 transition-colors clickable"
+                className="absolute right-6 p-2.5 rounded-full bg-black/60 border border-white/10 hover:bg-accent-gold hover:text-white text-white z-50 transition-colors clickable"
               >
                 <ChevronRight size={20} />
               </button>
@@ -237,6 +237,7 @@ export default function ProjectGallery() {
                 <span className="rivet absolute bottom-2 left-2 z-10" />
                 <span className="rivet absolute bottom-2 right-2 z-10" />
 
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={filteredItems[lightboxIndex].image}
                   alt={filteredItems[lightboxIndex].title}

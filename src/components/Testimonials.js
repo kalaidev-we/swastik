@@ -43,7 +43,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-24 bg-bg-main relative overflow-hidden border-b border-white/5">
+    <section id="testimonials" className="py-24 bg-bg-main relative overflow-hidden border-b border-black/5">
       {/* Background blueprint details */}
       <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
       <div className="absolute top-1/3 right-10 w-80 h-80 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
@@ -67,7 +67,7 @@ export default function Testimonials() {
         <div className="max-w-3xl mx-auto relative flex flex-col items-center py-4">
           
           {/* Quote Mark */}
-          <div className="mb-6 text-accent-gold/10">
+          <div className="mb-6 text-accent-gold/15">
             <Quote size={56} strokeWidth={1} />
           </div>
 
@@ -79,7 +79,7 @@ export default function Testimonials() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4 }}
-                className="steel-embossed p-8 md:p-12 rounded-2xl shadow-xl relative w-full text-center select-none"
+                className="steel-embossed p-8 md:p-12 rounded-2xl shadow-md relative w-full text-center select-none"
               >
                 {/* corner rivets */}
                 <span className="rivet absolute top-2 left-2" />
@@ -116,7 +116,7 @@ export default function Testimonials() {
           <div className="flex items-center gap-6 mt-8">
             <button
               onClick={handlePrev}
-              className="p-3 rounded-full border border-white/10 hover:border-accent-gold hover:text-bg-main text-text-muted hover:bg-accent-gold shadow-lg transition-all duration-300 clickable"
+              className="p-3 rounded-full border border-black/10 hover:border-accent-gold hover:text-white text-text-muted hover:bg-accent-gold shadow-md transition-all duration-300 clickable"
               aria-label="Previous Testimonial"
             >
               <ChevronLeft size={18} />
@@ -129,7 +129,7 @@ export default function Testimonials() {
                   key={idx}
                   onClick={() => setActiveIndex(idx)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    activeIndex === idx ? "bg-accent-gold w-6" : "bg-white/10 w-2"
+                    activeIndex === idx ? "bg-accent-gold w-6" : "bg-black/10 w-2"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
@@ -138,7 +138,7 @@ export default function Testimonials() {
 
             <button
               onClick={handleNext}
-              className="p-3 rounded-full border border-white/10 hover:border-accent-gold hover:text-bg-main text-text-muted hover:bg-accent-gold shadow-lg transition-all duration-300 clickable"
+              className="p-3 rounded-full border border-black/10 hover:border-accent-gold hover:text-white text-text-muted hover:bg-accent-gold shadow-md transition-all duration-300 clickable"
               aria-label="Next Testimonial"
             >
               <ChevronRight size={18} />

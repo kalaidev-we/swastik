@@ -42,7 +42,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-bg-main relative overflow-hidden border-t border-white/5">
+    <section id="contact" className="py-24 bg-bg-main relative overflow-hidden border-t border-black/5">
       {/* Background blueprint details */}
       <div className="absolute inset-0 blueprint-sheet opacity-25 pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-96 h-96 rounded-full bg-accent-gold/5 blur-3xl pointer-events-none" />
@@ -74,7 +74,7 @@ export default function Contact() {
             className="lg:col-span-5 flex flex-col justify-between space-y-8"
           >
             {/* Contact Details List (Steel Embossed Card) */}
-            <div className="steel-embossed p-8 rounded-2xl relative overflow-hidden space-y-6">
+            <div className="steel-embossed p-8 rounded-2xl relative overflow-hidden space-y-6 border border-black/5">
               {/* corner rivets */}
               <span className="rivet absolute top-1.5 left-1.5" />
               <span className="rivet absolute top-1.5 right-1.5" />
@@ -88,7 +88,7 @@ export default function Contact() {
               <div className="space-y-6">
                 {/* Address */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-black/30 flex items-center justify-center border border-white/5 flex-shrink-0 text-accent-gold shadow-md">
+                  <div className="w-10 h-10 rounded-lg bg-black/5 flex items-center justify-center border border-black/5 flex-shrink-0 text-accent-gold shadow-sm">
                     <MapPin size={18} />
                   </div>
                   <div>
@@ -101,7 +101,7 @@ export default function Contact() {
 
                 {/* Phones */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-black/30 flex items-center justify-center border border-white/5 flex-shrink-0 text-accent-gold shadow-md">
+                  <div className="w-10 h-10 rounded-lg bg-black/5 flex items-center justify-center border border-black/5 flex-shrink-0 text-accent-gold shadow-sm">
                     <Phone size={18} />
                   </div>
                   <div>
@@ -115,7 +115,7 @@ export default function Contact() {
 
                 {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-black/30 flex items-center justify-center border border-white/5 flex-shrink-0 text-accent-gold shadow-md">
+                  <div className="w-10 h-10 rounded-lg bg-black/5 flex items-center justify-center border border-black/5 flex-shrink-0 text-accent-gold shadow-sm">
                     <Mail size={18} />
                   </div>
                   <div>
@@ -128,7 +128,7 @@ export default function Contact() {
 
                 {/* Hours */}
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-black/30 flex items-center justify-center border border-white/5 flex-shrink-0 text-accent-gold shadow-md">
+                  <div className="w-10 h-10 rounded-lg bg-black/5 flex items-center justify-center border border-black/5 flex-shrink-0 text-accent-gold shadow-sm">
                     <Clock size={18} />
                   </div>
                   <div>
@@ -144,7 +144,7 @@ export default function Contact() {
             {/* Google Maps Card */}
             <div
               onClick={openGoogleMaps}
-              className="steel-embossed hover:border-accent-gold/40 p-6 rounded-2xl shadow-xl group cursor-pointer transition-all duration-300 relative overflow-hidden flex flex-col justify-end aspect-[2.1/1] select-none"
+              className="steel-embossed hover:border-accent-gold/40 p-6 rounded-2xl shadow-lg group cursor-pointer transition-all duration-300 relative overflow-hidden flex flex-col justify-end aspect-[2.1/1] select-none border border-black/5"
             >
               {/* corner rivets */}
               <span className="rivet absolute top-1.5 left-1.5 z-20" />
@@ -153,7 +153,7 @@ export default function Contact() {
               <span className="rivet absolute bottom-1.5 right-1.5 z-20" />
 
               {/* Abstract map pattern in background */}
-              <div className="absolute inset-0 bg-[radial-gradient(rgba(255,107,0,0.03)_1px,transparent_1px)] [background-size:16px_16px] opacity-70" />
+              <div className="absolute inset-0 bg-[radial-gradient(rgba(197,168,128,0.08)_1px,transparent_1px)] [background-size:16px_16px] opacity-70" />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-main via-bg-main/30 to-transparent" />
               
               <div className="relative z-10 flex justify-between items-end w-full">
@@ -165,7 +165,7 @@ export default function Contact() {
                     Muthusamy St, Sathy Road
                   </p>
                 </div>
-                <span className="text-[10px] uppercase tracking-widest font-mono font-bold text-text-main bg-black/40 px-4 py-2 rounded border border-white/10 group-hover:bg-accent-gold group-hover:border-accent-gold group-hover:text-bg-main transition-colors shadow-md">
+                <span className="text-[10px] uppercase tracking-widest font-mono font-bold text-text-main bg-white px-4 py-2 rounded border border-black/5 group-hover:bg-accent-gold group-hover:border-accent-gold group-hover:text-white transition-colors shadow-md">
                   Open Maps
                 </span>
               </div>
@@ -181,7 +181,7 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7"
           >
-            <div className="steel-embossed p-8 md:p-10 rounded-2xl shadow-xl relative overflow-hidden">
+            <div className="steel-embossed p-8 md:p-10 rounded-2xl shadow-xl relative overflow-hidden border border-black/5">
               {/* corner rivets */}
               <span className="rivet absolute top-1.5 left-1.5" />
               <span className="rivet absolute top-1.5 right-1.5" />
@@ -207,7 +207,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="Enter your name"
-                    className="w-full bg-black/35 border border-white/5 focus:border-accent-gold/50 rounded-lg py-3 px-4 outline-none text-sm font-body text-text-main transition-colors"
+                    className="w-full bg-white border border-black/10 focus:border-accent-gold/50 rounded-lg py-3 px-4 outline-none text-sm font-body text-text-main transition-colors"
                   />
                 </div>
 
@@ -224,7 +224,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="e.g., +91 9876543210"
-                    className="w-full bg-black/35 border border-white/5 focus:border-accent-gold/50 rounded-lg py-3 px-4 outline-none text-sm font-body text-text-main transition-colors"
+                    className="w-full bg-white border border-black/10 focus:border-accent-gold/50 rounded-lg py-3 px-4 outline-none text-sm font-body text-text-main transition-colors"
                   />
                 </div>
 
@@ -238,13 +238,13 @@ export default function Contact() {
                     name="profession"
                     value={formData.profession}
                     onChange={handleChange}
-                    className="w-full bg-black/35 border border-white/5 focus:border-accent-gold/50 rounded-lg py-3 px-4 outline-none text-sm font-body text-text-main transition-colors"
+                    className="w-full bg-white border border-black/10 focus:border-accent-gold/50 rounded-lg py-3 px-4 outline-none text-sm font-body text-text-main transition-colors"
                   >
-                    <option value="Homeowner" className="bg-bg-card">Homeowner / Residential Client</option>
-                    <option value="Architect" className="bg-bg-card">Architect / Designer</option>
-                    <option value="Builder" className="bg-bg-card">Builder / Developer</option>
-                    <option value="Contractor" className="bg-bg-card">Contractor / Carpenter</option>
-                    <option value="Retailer" className="bg-bg-card">Retailer / Sub-Dealer</option>
+                    <option value="Homeowner" className="bg-white">Homeowner / Residential Client</option>
+                    <option value="Architect" className="bg-white">Architect / Designer</option>
+                    <option value="Builder" className="bg-white">Builder / Developer</option>
+                    <option value="Contractor" className="bg-white">Contractor / Carpenter</option>
+                    <option value="Retailer" className="bg-white">Retailer / Sub-Dealer</option>
                   </select>
                 </div>
 
@@ -260,16 +260,16 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="What fittings or products are you looking for? Mention sizes or brands if any."
-                    className="w-full bg-black/35 border border-white/5 focus:border-accent-gold/50 rounded-lg py-3 px-4 outline-none text-sm font-body text-text-main transition-colors resize-none"
+                    className="w-full bg-white border border-black/10 focus:border-accent-gold/50 rounded-lg py-3 px-4 outline-none text-sm font-body text-text-main transition-colors resize-none"
                   />
                 </div>
 
                 {/* Action Submit */}
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 py-4 bg-accent-gold hover:bg-accent-gold/90 text-bg-main rounded-lg font-mono font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(255,107,0,0.3)] clickable"
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-accent-gold hover:bg-accent-gold/90 text-white rounded-lg font-mono font-bold uppercase tracking-widest transition-all duration-300 shadow-md clickable"
                 >
-                  <Send size={14} className="text-bg-main" />
+                  <Send size={14} className="text-white" />
                   <span>Send Enquiry Sheet</span>
                 </button>
 
@@ -300,7 +300,7 @@ export default function Contact() {
           <MessageCircle size={28} className="fill-white text-[#25D366]" />
           
           {/* Tooltip on Hover (Steel plate style) */}
-          <span className="absolute right-16 top-1/2 -translate-y-1/2 steel-embossed text-text-main text-[10px] font-mono font-bold tracking-widest uppercase py-2.5 px-4 rounded shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-white/10">
+          <span className="absolute right-16 top-1/2 -translate-y-1/2 steel-embossed text-text-main text-[10px] font-mono font-bold tracking-widest uppercase py-2.5 px-4 rounded shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-black/5">
             <span className="rivet absolute top-1 left-1" />
             <span className="rivet absolute top-1 right-1" />
             <span className="rivet absolute bottom-1 left-1" />

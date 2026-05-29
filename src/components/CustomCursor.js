@@ -70,21 +70,21 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Glowing neon-orange laser dot */}
+      {/* High-visibility charcoal/gold laser dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full bg-accent-gold pointer-events-none z-9999 shadow-[0_0_10px_#FF6B00]"
+        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full bg-text-main pointer-events-none z-9999 shadow-[0_0_8px_rgba(197,168,128,0.75)]"
         style={{
           transform: "translate3d(-100px, -100px, 0)",
         }}
       />
-      {/* Trailing orange pointer scope ring */}
+      {/* Trailing gold pointer scope ring */}
       <div
         ref={ringRef}
         className={`fixed top-0 left-0 w-8 h-8 rounded-full border pointer-events-none z-9998 transition-colors duration-300 ${
           hovered
-            ? "border-accent-gold bg-accent-gold/15 shadow-[0_0_15px_rgba(255,107,0,0.3)]"
-            : "border-accent-gold/40 bg-transparent"
+            ? "border-accent-gold bg-accent-gold/15 shadow-[0_0_12px_rgba(197,168,128,0.35)]"
+            : "border-text-main/20 bg-transparent"
         }`}
         style={{
           transform: "translate3d(-100px, -100px, 0)",
